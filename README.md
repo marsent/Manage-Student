@@ -29,13 +29,14 @@ git push
 ```
 
 ## Sử lỗi khi không push được
-***
+
 >Lỗi chủ yếu do người khác đã push nhưng mình chưa pull về làm code không đồng bộ để sửa thì chỉ cần pull code về rồi push lên lại bình thường
 ```sh
 git pull
 git push
 ```
-
+> Nếu gặp lỗi lạ chưa biết cách fix thì có thể tra google 5p sau đó nhắn tin hỏi t.
+Lưu ý không nhắn tin trong giờ nghĩ trưa giờ ăn trưa ăn chiều, từ 9h30 pm tới 7h am
 ## Author
 
 👤 **Phương Anh Thuận Quốc Tiến**
