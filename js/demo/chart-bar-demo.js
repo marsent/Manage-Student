@@ -36,7 +36,7 @@ var myBarChart = new Chart(ctx, {
     datasets: [{
       label: "điểm trung bình môn",
       backgroundColor: "#4e73df",
-      hoverBackgroundColor: "#2e59d9",
+      hoverBackgroundColor: "#1CC88A",
       borderColor: "#4e73df",
       data: [8.4, 7.2, 8.3, 8.6, 8.2, 9,8.9]
     }],
