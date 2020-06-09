@@ -4,7 +4,7 @@ include("header.php");
 ?>
 
 <?php
-include("homepage.php");
+include("./Template//homepage.php");
 ?>
 
 <?php
