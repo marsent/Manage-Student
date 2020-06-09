@@ -6,7 +6,7 @@
   </a>
 </p>
 
-> do an nhap mon cong nghe phan mem
+> Đồ án nhập môn công nghệ phần mền
 
 ### 🏠 [Homepage](index.php)
 
