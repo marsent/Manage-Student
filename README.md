@@ -10,27 +10,35 @@
 
 ### 🏠 [Homepage](index.php)
 
-## Install
-
+## Chú ý add file
+_Nếu bây không nghe theo 5 điều bác hồ dạy dưới đây sau này bây sẽ hối hận_
 ```sh
-npm install
+1. Giao diện thì bỏ trong view
+2. Có thêm cdn hay các file css từ các nguồn khác thì phải comment chú thích cho người khác biết
+3. Viết code cần clean code comment rõ ràng để sau này gắn backend ai không nghe sau này gắn backend than trời trời không thấu đâu
+4. Lúc commit cần ghi rõ commit cái gì thêm xóa sửa những gì để cho người khác biết
+5. Nếu có khả năng thì code rồi tập import code theo giống file mẫu index.php tập làm cấu truc file để sau này đở mắc công sửa
 ```
 
-## Usage
+## Cách push file bằng cmd hoặc git bash
 
 ```sh
-npm run start
+git add .
+git commit -m "lệnh cần commit"
+git push
 ```
 
-## Run tests
-
+## Sử lỗi khi không push được
+***
+_Lỗi chủ yếu do người khác đã push nhưng mình chưa pull về làm code không đồng bộ để sửa thì chỉ cần pull code về rồi push lên lại bình thường_
 ```sh
-npm run test
+git pull
+git push
 ```
 
 ## Author
 
-👤 **Phuong Anh Thuan Quoc Tien**
+👤 **Phương Anh Thuận Quốc Tiến**
 
 
 ## Show your support
