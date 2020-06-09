@@ -30,7 +30,7 @@ git push
 
 ## Sử lỗi khi không push được
 ***
-_Lỗi chủ yếu do người khác đã push nhưng mình chưa pull về làm code không đồng bộ để sửa thì chỉ cần pull code về rồi push lên lại bình thường_
+>Lỗi chủ yếu do người khác đã push nhưng mình chưa pull về làm code không đồng bộ để sửa thì chỉ cần pull code về rồi push lên lại bình thường
 ```sh
 git pull
 git push
