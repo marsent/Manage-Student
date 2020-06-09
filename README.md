@@ -12,13 +12,13 @@
 
 ## Chú ý add file
 _Nếu bây không nghe theo 5 điều bác hồ dạy dưới đây sau này bây sẽ hối hận_
-```sh
-1. Giao diện thì bỏ trong view
-2. Có thêm cdn hay các file css từ các nguồn khác thì phải comment chú thích cho người khác biết
-3. Viết code cần clean code comment rõ ràng để sau này gắn backend ai không nghe sau này gắn backend than trời trời không thấu đâu
-4. Lúc commit cần ghi rõ commit cái gì thêm xóa sửa những gì để cho người khác biết
-5. Nếu có khả năng thì code rồi tập import code theo giống file mẫu index.php tập làm cấu truc file để sau này đở mắc công sửa
-```
+
+>1. Giao diện thì bỏ trong view
+>2. Có thêm cdn hay các file css từ các nguồn khác thì phải comment chú thích cho người khác biết
+>3. Viết code cần clean code comment rõ ràng để sau này gắn backend ai không nghe sau này gắn backend than trời trời không thấu đâu
+>4. Lúc commit cần ghi rõ commit cái gì thêm xóa sửa những gì để cho người khác biết
+>5. Nếu có khả năng thì code rồi tập import code theo giống file mẫu index.php tập làm cấu truc file để sau này đở mắc công sửa
+
 
 ## Cách push file bằng cmd hoặc git bash
 
