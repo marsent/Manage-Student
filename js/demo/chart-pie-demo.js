@@ -31,5 +31,6 @@ var myPieChart = new Chart(ctx, {
       display: false
     },
     cutoutPercentage: 80,
+    
   },
 });

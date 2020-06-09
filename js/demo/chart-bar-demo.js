@@ -34,11 +34,11 @@ var myBarChart = new Chart(ctx, {
   data: {
     labels: ["Toán", "Ngữ văn", "Lý", "Hóa", "Sinh", "Sử","Đia"],
     datasets: [{
-      label: "Revenue",
+      label: "điểm trung bình môn",
       backgroundColor: "#4e73df",
       hoverBackgroundColor: "#2e59d9",
       borderColor: "#4e73df",
-      data: [5, 6, 8, 4, 10, 9,3],
+      data: [8.4, 7.2, 8.3, 8.6, 8.2, 9,8.9]
     }],
   },
   options: {
@@ -61,7 +61,7 @@ var myBarChart = new Chart(ctx, {
           drawBorder: false
         },
         ticks: {
-          maxTicksLimit: 6
+          maxTicksLimit: 10
         },
         maxBarThickness: 25,
       }],
@@ -69,12 +69,12 @@ var myBarChart = new Chart(ctx, {
         ticks: {
           min: 0,
           max: 10,
-          maxTicksLimit: 5,
+          maxTicksLimit: 10,
           padding: 10,
           // Include a dollar sign in the ticks
-          callback: function(value, index, values) {
-            return  number_format(value);
-          }
+         // callback: function(value, index, values) {
+         //   return  number_format(value);
+          //}
         },
         gridLines: {
           color: "rgb(234, 236, 244)",
@@ -103,7 +103,7 @@ var myBarChart = new Chart(ctx, {
       callbacks: {
         label: function(tooltipItem, chart) {
           var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-          return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+          return datasetLabel + ' ' + tooltipItem.yLabel;
         }
       }
     },
