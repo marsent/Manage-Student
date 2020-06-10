@@ -4,7 +4,7 @@ include("header.php");
 ?>
 
 <?php
-include("./Template//homepage.php");
+include("xemketqua.html");
 ?>
 
 <?php

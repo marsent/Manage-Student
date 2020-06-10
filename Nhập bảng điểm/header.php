@@ -43,12 +43,19 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 			<div class="navbar-nav">
-				<a class="nav-item nav-link active" href="#">Dashboard</a>
+				<a class="nav-item nav-link " href="#">Dashboard</a>
 				<a class="nav-item nav-link " href="#">Lớp học</a>
 				<a class="nav-item nav-link " href="#">Học sinh</a>
-				<a class="nav-item nav-link " href="#">Bảng điểm</a>
+				<div class=" nav-item nav-link dropdown active"> 
+					<a class=" dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Bảng điểm
+					</a>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<a class="dropdown-item" href="#">Xem kết quả</a>
+						<a class="dropdown-item active" href="#">Nhập bảng điểm</a>
+						</div>
+				</div>
 				<a class="nav-item nav-link " href="#">Quy định</a>
 			</div>
 		</div>
 		</nav>
-
