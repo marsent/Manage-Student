@@ -4,7 +4,7 @@ include("header.php");
 ?>
 
 <?php
-include("nhapdiem.html");
+include("View/homepage.php");
 ?>
 
 <?php
