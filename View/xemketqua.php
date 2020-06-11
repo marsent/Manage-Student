@@ -52,8 +52,8 @@
                         Bảng điểm
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item active" href="XemKetQua.php">Xem kết quả</a>
-                        <a class="dropdown-item " href="NhapBangDiem.php">Nhập bảng điểm</a>
+                        <a class="dropdown-item active" href="xemketqua.php">Xem kết quả</a>
+                        <a class="dropdown-item " href="nhapbangdiem.php">Nhập bảng điểm</a>
                     </div>
                 </div>
                 <a class="nav-item nav-link " href="#">Quy định</a>

@@ -1,6 +1,6 @@
 
 <?php
-include("View/xemketqua.html");
+include("View/xemketqua.php");
 ?>
 
 <?php

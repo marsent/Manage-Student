@@ -1,6 +1,6 @@
 
 <?php
-include("View/NhapBangDiem.html");
+include("View/nhapbangdiem.php");
 ?>
 
 <?php
