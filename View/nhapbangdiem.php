@@ -60,7 +60,7 @@
             </div>
         </div>
     </nav>
-    
+
     <div class="container-fluid">
         <span>
             <h1 style=" text-shadow: black; text-align: center;"> Nhập bảng điểm</h1>
@@ -97,22 +97,32 @@
                         </div>
                         <br>
                         <!-- bảng nhập điểm -->
-                        <div>
+                        <div style="text-align: center;">
                             <table class="table">
                                 <thead class="thead-dark">
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Họ tên</th>
-                                        <th scope="col">Điểm 15'</th>
-                                        <th scope="col">Điểm 1 tiết</th>
+                                        <th scope="col">Điểm 15' <br>
+                                            <span style=" color: gray; font-size: small;">(Có 
+                                        <input type="text" style="background-color: transparent; width: 25px; border: gray solid 1px; color:#ffff;">
+                                        cột điểm 15 phút)
+                                        </span>
+                                        </th>
+                                        <th scope="col">Điểm 1 tiết<br>
+                                            <span style=" color: gray; font-size: small;">(Có 
+                                        <input type="text" style="background-color: transparent; width: 25px; border: gray solid 1px; color:#ffff;">
+                                        cột điểm 1 tiết)
+                                        </span>
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <th scope="row">1</th>
                                         <td></td>
-                                        <td><input type="text"></td>
-                                        <td><input type="text"></td>
+                                        <td><input type="text" style="background-color: transparent;border: gray solid 1px;"></td>
+                                        <td><input type="text" style="background-color: transparent;border: gray solid 1px;"></td>
                                     </tr>
                                 </tbody>
                             </table>
