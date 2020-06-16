@@ -52,8 +52,8 @@
                         Bảng điểm
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="xemketqua.php">Xem kết quả</a>
-                        <a class="dropdown-item active" href="nhapbangdiem.php">Nhập bảng điểm</a>
+                        <a class="dropdown-item active" href="xemketqua.php">Xem kết quả</a>
+                        <a class="dropdown-item " href="nhapbangdiem.php">Nhập bảng điểm</a>
                     </div>
                 </div>
                 <a class="nav-item nav-link " href="#">Quy định</a>
@@ -63,14 +63,14 @@
 
     <div class="container-fluid">
         <span>
-            <h1 style=" text-shadow: black; text-align: center;"> Nhập bảng điểm</h1>
+            <h1 style=" text-shadow: black; text-align: center;"> Tra cứu kết quả theo môn học</h1>
         </span>
         <div class="card shadow mb-4">
             <div class="card-body">
                 <div class="chart-area">
-                    <form action="" method="POST">
+                    <form action="" method="get">
                         <div class="row">
-                            <div class="col-4">
+                            <div class="col-3">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <label class="input-group-text" for="NamHoc">Năm học</label>
@@ -82,7 +82,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-3">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <label class="input-group-text" for="HocKy">Học kỳ</label>
@@ -94,20 +94,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-4">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" for="Lop">Lớp</label>
-                                    </div>
-                                    <select class="custom-select" id="Lop">
-                                      <option selected>Choose...</option>
-                                      <option value="1">10A1</option>
-                                      <option value="2">10A1</option>
-                                      <option value="3">10A1</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-4">
+                            <div class="col-3">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <label class="input-group-text" for="MonHoc">Môn học</label>
@@ -120,80 +107,57 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-4">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" for="15col">Số cột điểm 15 phút</label>
-                                    </div>
-                                    <select class="custom-select" id="15col">
-                                      <option selected>Choose...</option>
-                                      <option value="1">1</option>
-                                      <option value="2">2</option>
-                                      <option value="3">3</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" for="1Tcol">Số cột điểm 1 tiết</label>
-                                    </div>
-                                    <select class="custom-select" id="1Tcol">
-                                      <option selected>Choose...</option>
-                                      <option value="1">1</option>
-                                      <option value="2">2</option>
-                                      <option value="3">3</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col"><button type="submit" class="btn btn-primary">Tạo bảng điểm</button> </div>
+                            <div class="col-3"><button type="submit" class="btn btn-primary btn-block" style=" float:right; ">Xem kết quả</button> </div>
                         </div>
-                        <br>
-                        <!-- bảng nhập điểm -->
-                        <div>
-                            <table class="table">
-                                <thead class="thead-light">
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Họ tên</th>
-                                        <th scope="col">Điểm 15'</th>
-                                        <th scope="col">Điểm 1 tiết</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Hỷ Hoa Phưn</td>
-                                        <td><input type="text" style="background-color: transparent;border: gray solid 1px;"></td>
-                                        <td><input type="text" style="background-color: transparent;border: gray solid 1px;"></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Hỷ Hoa Phưn</td>
-                                        <td><input type="text" style="background-color: transparent;border: gray solid 1px;"></td>
-                                        <td><input type="text" style="background-color: transparent;border: gray solid 1px;"></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Hỷ Hoa Phưn</td>
-                                        <td><input type="text" style="background-color: transparent;border: gray solid 1px;"></td>
-                                        <td><input type="text" style="background-color: transparent;border: gray solid 1px;"></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Hỷ Hoa Phưn</td>
-                                        <td><input type="text" style="background-color: transparent;border: gray solid 1px;"></td>
-                                        <td><input type="text" style="background-color: transparent;border: gray solid 1px;"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <button type="submit" class="btn btn-primary" style=" float:right; ">Nhập bảng điểm</button>
                     </form>
+                </div>
+                <!-- bảng kết quả -->
+                <div class="chart-area">
+                    <table class="table">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">lớp</th>
+                                <th scope="col">Sĩ Số</th>
+                                <th scope="col">Số Lượng Đạt</th>
+                                <th scope="col">Tỉ Lệ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>10A1</td>
+                                <td>10</td>
+                                <td>9</td>
+                                <td>90%</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>10A1</td>
+                                <td>10</td>
+                                <td>9</td>
+                                <td>90%</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>10A1</td>
+                                <td>10</td>
+                                <td>9</td>
+                                <td>90%</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>10A1</td>
+                                <td>10</td>
+                                <td>9</td>
+                                <td>90%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button type="submit" class="btn btn-primary" style=" float:right; ">In kết quả</button>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </body>
 
