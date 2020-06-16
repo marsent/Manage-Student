@@ -13,12 +13,14 @@
 	<!-- Custom fonts for this template-->
   	<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  	<!-- Jquery -->
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 	<!-- Custom css -->
 	<link rel="stylesheet" href="./css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/sb-admin-2.css">
 </head>
 <body>
-	<header id="header" class="">
+	<!-- <header id="header" class="">
 		<div class="font-rale font-size-14 text-black-50 m-0">
 			<a href="#" class="px-3 border-right border-left text-dark">Hệ thống</a>
 			<a href="#" class="px-3 border-right text-dark">Quản lý Dữ Liệu</a>
@@ -35,26 +37,20 @@
 			<a href="#" class="px-3 border-right text-dark">Trợ giúp</a>
 			<a href="#" class="px-3 border-right text-dark">Thông tin phần mềm</a>
 		</div>
-	</header>
+	</header> -->
+	
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white mb-4 static-top shadow">
-		<a class="navbar-brand" href="index.php">Quản lí học sinh</a>
+		<!-- <a class="navbar-brand"  href="index.php">Quản lí học sinh</a> 
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
+		-->
+		
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 			<div class="navbar-nav">
-				<a class="nav-item nav-link active" href="index.php">Dashboard</a>
-				<a class="nav-item nav-link " href="#">Lớp học</a>
 				<a class="nav-item nav-link " href="#">Học sinh</a>
-				<div class=" nav-item nav-link dropdown " style="cursor: pointer;"> 
-					<a class=" dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Bảng điểm
-					</a>
-						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						<a class="dropdown-item" href="XemKetQua.php">Xem kết quả</a>
-						<a class="dropdown-item " href="NhapBangDiem.php">Nhập bảng điểm</a>
-						</div>
-				</div>				
+				<a class="nav-item nav-link " href="#">Lớp học</a>
+				<a class="nav-item nav-link " href="#">Môn học</a>
 				<a class="nav-item nav-link " href="#">Quy định</a>
 			</div>
 		</div>
