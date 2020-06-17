@@ -12,46 +12,46 @@
 								<tr>
 									<td>Mã Học Sinh : </td>
 									<td>
-										<input type="text" style="margin-left:60px">
+										<input type="text" name="MSHS" style="margin-left:60px">
 									</td>
 								</tr>
 								<tr>
 									<td>Họ Và Tên : </td>
 									<td>
-										<input type="text" style="margin-left:60px">
+										<input type="text"  name="Name" style="margin-left:60px">
 									</td>
 								</tr>
 								<tr>
 									<td>Giới Tính : </td>
 									<td>
-										<input type="radio" name="gender" value="Nam" checked="checked" style="margin-left:60px">
+										<input type="radio" name="Gender" value="Nam" checked="checked" style="margin-left:60px">
 										<label for="male">Nam</label>
-										<input type="radio" name="gender" value="Nữ">
+										<input type="radio" name="Gender" value="Nữ">
 										<label for="female">Nữ</label>
 									</td>
 								</tr>
 								<tr>
 									<td>Ngày Sinh : </td>
 									<td>
-										<input type="date" style="margin-left:60px">
+										<input type="date" name="Date" style="margin-left:60px">
 									</td>
 								</tr>
 								<tr>
 									<td>Địa Chỉ : </td>
 									<td>
-										<input type="text" style="margin-left:60px">
+										<input type="text" name="Address" style="margin-left:60px">
 									</td>
 								</tr>
 								<tr>
 									<td>Email : </td>
 									<td>
-										<input type="email" style="margin-left:60px">
+										<input type="email"  name="Email" style="margin-left:60px">
 									</td>
 								</tr>
 
 							</table>
 							<div class="d-flex justify-content-center">
-							<button type="button" class="btn btn-primary d-flex justify-content-center" style="margin-bottom: 8px;">Thêm học sinh mới</button>
+							<button type="button" id="addHS" class="btn btn-primary " style="margin-bottom: 8px;">Thêm học sinh mới</button>
 						</div>
 						</div>
 					</div>
@@ -215,4 +215,8 @@
 		</div>
 	</div>
 	</div>
+	<div id="error">
+		
+	</div>
+<script type="text/javascript" src="js/sendDatahs.js"></script>
 <?php include 'View/element/footer.php'; ?>
