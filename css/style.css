@@ -69,3 +69,12 @@ a {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+.my-custom-scrollbar {
+  position: relative;
+  overflow: auto;
+  height: 900px;
+}
+.table-wrapper-scroll-y {
+  display: block;
+}
