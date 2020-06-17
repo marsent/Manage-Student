@@ -4,5 +4,5 @@ include("View/nhapbangdiem.php");
 ?>
 
 <?php
-include("footer.php");
+include("View/element/footer.php");
 ?>
