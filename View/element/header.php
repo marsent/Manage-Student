@@ -56,7 +56,7 @@
 				</a>
 				<div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
 					<a class="dropdown-item" href="../cnpm-qlhs/nhapbangdiem.php">Thêm môn học</a>
-					<a class="dropdown-item" href="./cnpm-qlhs/xemketquathomon.pph">Xem thống kê môn</a>
+					<a class="dropdown-item" href="../cnpm-qlhs/xemketquatheomon">Xem thống kê môn</a>
 					<a class="dropdown-item" href="../cnpm-qlhs/xemketquatheohocky">Xem thống kê học kỳ</a>
 				</div>
 			</div>
