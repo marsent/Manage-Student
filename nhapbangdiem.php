@@ -73,7 +73,7 @@
                                     <input class="form-control" type="text" name="col15p" placeholder="1">
                                 </div>
                             </div>
-                            <div class="col d-flex justify-content-end"><button type="submit" class="btn btn-primary">Tạo bảng điểm</button> </div>
+                            <div class="col d-flex justify-content-center"><button type="submit" class="btn btn-primary">Tạo bảng điểm</button> </div>
                         </div>
                         <br>
                         <!-- bảng nhập điểm -->
@@ -130,7 +130,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <button type="submit" class="btn btn-primary" style=" float:right; ">Cập nhật bảng điểm</button>
+                       <button type="submit" class="btn btn-primary" style=" float:right; ">Cập nhật bảng điểm</button>
                     </form>
                 </div>
             </div>

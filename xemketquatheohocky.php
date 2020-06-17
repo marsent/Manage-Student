@@ -76,7 +76,6 @@
                             </tr>
                         </tbody>
                     </table>
-                    <button type="submit" class="btn btn-primary" style=" float:right; ">In kết quả</button>
                 </div>
             </div>
         </div>
