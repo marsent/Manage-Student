@@ -60,49 +60,48 @@
             </div>
         </div>
     </nav>
-    
+
     <div class="container-fluid">
         <span>
-            <h1 style=" text-shadow: black; text-align: center;"> Tra cứu kết quả</h1>
+            <h1 style=" text-shadow: black; text-align: center;"> Tra cứu kết quả theo học kỳ</h1>
         </span>
         <div class="card shadow mb-4">
             <div class="card-body">
                 <div class="chart-area">
                     <form action="" method="get">
                         <div class="row">
-                            <div class="col">
-                                <h6>Năm học</h6>
-                                <select class="form-control">
-                                    <option>Default select</option>
-                                </select>
-                            </div>
-                            <div class="col">
-                                <h6>Học kỳ</h6>
-                                <select class="form-control">
-                                    <option>Default select</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                  Xem kết quả theo môn học 
-                                </label>
-                            <div>
-                                <h6>Môn học</h6>
-                                <select class="form-control">
-                                        <option>Default select</option>
+                            <div class="col-5">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="NamHoc">Năm học</label>
+                                    </div>
+                                    <select class="custom-select" id="iNamHoc">
+                                      <option selected>Choose...</option>
+                                      <option value="1">2018-2019</option>
+                                      <option value="2">2021-2022</option>
                                     </select>
+                                </div>
                             </div>
-                            <br>
+                            <div class="col-5">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="HocKy">Học kỳ</label>
+                                    </div>
+                                    <select class="custom-select" id="HocKy">
+                                      <option selected>Choose...</option>
+                                      <option value="1">Học kỳ 1</option>
+                                      <option value="2">Học kỳ 2</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-2"><button type="submit" class="btn btn-primary btn-block" style=" float:right; ">Xem kết quả</button> </div>
                         </div>
-                        <button type="submit" class="btn btn-outline-secondary" style=" float:right; ">Xem kết quả</button>
                     </form>
                 </div>
                 <!-- bảng kết quả -->
                 <div class="chart-area">
                     <table class="table">
-                        <thead class="thead-dark">
+                        <thead class="thead-light">
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">lớp</th>
@@ -114,13 +113,35 @@
                         <tbody>
                             <tr>
                                 <th scope="row">1</th>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>10A1</td>
+                                <td>10</td>
+                                <td>9</td>
+                                <td>90%</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>10A1</td>
+                                <td>10</td>
+                                <td>9</td>
+                                <td>90%</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>10A1</td>
+                                <td>10</td>
+                                <td>9</td>
+                                <td>90%</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>10A1</td>
+                                <td>10</td>
+                                <td>9</td>
+                                <td>90%</td>
                             </tr>
                         </tbody>
                     </table>
-                    <button type="submit" class="btn btn-outline-secondary" style=" float:right; ">In kết quả</button>
+                    <button type="submit" class="btn btn-primary" style=" float:right; ">In kết quả</button>
                 </div>
             </div>
         </div>
