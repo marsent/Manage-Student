@@ -48,9 +48,18 @@
 		
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 			<div class="navbar-nav">
-				<a class="nav-item nav-link " href="#">Học sinh</a>
+				<a class="nav-item nav-link " href="../cnpm-qlhs/hocsinh.php">Học sinh</a>
 				<a class="nav-item nav-link " href="#">Lớp học</a>
-				<a class="nav-item nav-link " href="#">Môn học</a>
+				<div class="dropdown nav-item nav-link " style="cursor: pointer;">
+				<a class=" dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Môn học
+				</a>
+				<div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+					<a class="dropdown-item" href="../cnpm-qlhs/nhapbangdiem.php">Thêm môn học</a>
+					<a class="dropdown-item" href="./cnpm-qlhs/xemketquathomon.pph">Xem thống kê môn</a>
+					<a class="dropdown-item" href="../cnpm-qlhs/xemketquatheohocky">Xem thống kê học kỳ</a>
+				</div>
+			</div>
 				<a class="nav-item nav-link " href="#">Quy định</a>
 			</div>
 		</div>
