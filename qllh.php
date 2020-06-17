@@ -171,77 +171,77 @@ include("View/element/header.php");
 									<td>L10A1</td>
 									<td>10A1</td>
 									<td>30</td>
-									<td> <button class="btn btn-primary"> Sửa</button> <button class="btn btn-primary"> Xóa</button>
+									<td><button class="btn btn-primary"> Sửa</button></td>
 								</tr>
 								<tr>
 									<th scope="row">1</th>
 									<td>L10A1</td>
 									<td>10A1</td>
 									<td>30</td>
-									<td> <button class="btn btn-primary"> Sửa</button> <button class="btn btn-primary"> Xóa</button>
+									<td><button class="btn btn-primary"> Sửa</button></td>
 								</tr>
 								<tr>
 									<th scope="row">1</th>
 									<td>L10A1</td>
 									<td>10A1</td>
 									<td>30</td>
-									<td> <button class="btn btn-primary"> Sửa</button> <button class="btn btn-primary"> Xóa</button>
+									<td><button class="btn btn-primary"> Sửa</button></td>
 								</tr>
 								<tr>
 									<th scope="row">1</th>
 									<td>L10A1</td>
 									<td>10A1</td>
 									<td>30</td>
-									<td> <button class="btn btn-primary"> Sửa</button> <button class="btn btn-primary"> Xóa</button>
+									<td><button class="btn btn-primary"> Sửa</button></td>
 								</tr>
 								<tr>
 									<th scope="row">1</th>
 									<td>L10A1</td>
 									<td>10A1</td>
 									<td>30</td>
-									<td> <button class="btn btn-primary"> Sửa</button> <button class="btn btn-primary"> Xóa</button>
+									<td><button class="btn btn-primary"> Sửa</button></td>
 								</tr>
 								<tr>
 									<th scope="row">1</th>
 									<td>L10A1</td>
 									<td>10A1</td>
 									<td>30</td>
-									<td> <button class="btn btn-primary"> Sửa</button> <button class="btn btn-primary"> Xóa</button>
+									<td><button class="btn btn-primary"> Sửa</button></td>
 								</tr>
 								<tr>
 									<th scope="row">1</th>
 									<td>L10A1</td>
 									<td>10A1</td>
 									<td>30</td>
-									<td> <button class="btn btn-primary"> Sửa</button> <button class="btn btn-primary"> Xóa</button>
+									<td><button class="btn btn-primary"> Sửa</button></td>
 								</tr>
 								<tr>
 									<th scope="row">1</th>
 									<td>L10A1</td>
 									<td>10A1</td>
 									<td>30</td>
-									<td> <button class="btn btn-primary"> Sửa</button> <button class="btn btn-primary"> Xóa</button>
+									<td><button class="btn btn-primary"> Sửa</button></td>
 								</tr>
 								<tr>
 									<th scope="row">1</th>
 									<td>L10A1</td>
 									<td>10A1</td>
 									<td>30</td>
-									<td> <button class="btn btn-primary"> Sửa</button> <button class="btn btn-primary"> Xóa</button>
+									<td><button class="btn btn-primary"> Sửa</button></td>
 								</tr>
 								<tr>
 									<th scope="row">1</th>
 									<td>L10A1</td>
 									<td>10A1</td>
 									<td>30</td>
-									<td> <button class="btn btn-primary"> Sửa</button> <button class="btn btn-primary"> Xóa</button>
+									<td><button class="btn btn-primary"> Sửa</button></td>
 								</tr>
 								<tr>
 									<th scope="row">1</th>
 									<td>L10A1</td>
 									<td>10A1</td>
 									<td>30</td>
-									<td> <button class="btn btn-primary"> Sửa</button> <button class="btn btn-primary"> Xóa</button>
+									<td><button class="btn btn-primary"> Sửa</button></td>
 								</tr>
 							</tbody>
 						</table>
