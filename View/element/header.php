@@ -40,24 +40,30 @@
 	</header> -->
 	
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white mb-4 static-top shadow">
-		<!-- <a class="navbar-brand"  href="index.php">Quản lí học sinh</a> 
+		 <a class="navbar-brand"  href="index.php">Quản lí học sinh</a> 
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		-->
+		
 		
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 			<div class="navbar-nav">
-				<a class="nav-item nav-link " href="../cnpm-qlhs/hocsinh.php">Học sinh</a>
-				<a class="nav-item nav-link " href="#">Lớp học</a>
+				<a class="nav-item nav-link " href="hocsinh.php">Học sinh</a>
+				<a class="nav-item nav-link " href="qllh.php">Lớp học</a>
 				<div class="dropdown nav-item nav-link " style="cursor: pointer;">
 				<a class=" dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					Môn học
 				</a>
 				<div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+<<<<<<< HEAD
 					<a class="dropdown-item" href="../cnpm-qlhs/nhapbangdiem.php">Thêm môn học</a>
 					<a class="dropdown-item" href="../cnpm-qlhs/xemketquatheomon">Xem thống kê môn</a>
 					<a class="dropdown-item" href="../cnpm-qlhs/xemketquatheohocky">Xem thống kê học kỳ</a>
+=======
+					<a class="dropdown-item" href="nhapbangdiem.php">Thêm môn học</a>
+					<a class="dropdown-item" href="xemketquatheomon.php">Xem thống kê môn</a>
+					<a class="dropdown-item" href="xemketquatheohocky.php">Xem thống kê học kỳ</a>
+>>>>>>> 082f9b8f84de06d1f6f6ee37bb1973c87220f93e
 				</div>
 			</div>
 				<a class="nav-item nav-link " href="#">Quy định</a>

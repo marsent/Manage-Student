@@ -130,7 +130,11 @@
                                 </tbody>
                             </table>
                         </div>
+<<<<<<< HEAD:NhapBangDiem.php
                         <!-- <button type="submit" class="btn btn-primary " style=" float:right; ">Cập nhật bảng điểm</button> -->
+=======
+                       <button type="submit" class="btn btn-primary" style=" float:right; ">Cập nhật bảng điểm</button>
+>>>>>>> 082f9b8f84de06d1f6f6ee37bb1973c87220f93e:nhapbangdiem.php
                     </form>
                 </div>
             </div>
