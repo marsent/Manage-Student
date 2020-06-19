@@ -1,6 +1,4 @@
-<?php include 'View/element/header.php';
-require 'controllers/bangdiemmon.php'
-?>
+<?php include 'View/element/header.php'; ?>
 <div class="container-fluid">
     <span>
         <h1 style=" text-shadow: black; text-align: center;"> Nhập bảng điểm</h1>
@@ -13,9 +11,8 @@ require 'controllers/bangdiemmon.php'
                         <div class="input-group-prepend">
                             <label class="input-group-text" for="NamHoc">Năm học</label>
                         </div>
-                        <select class="custom-select" id="iNamHoc">
-                            <option selected value="1">2018-2019</option>
-                            <option value="2">2021-2022</option>
+                        <select class="custom-select" id="NamHoc">
+                            
                         </select>
                     </div>
                 </div>
@@ -36,9 +33,7 @@ require 'controllers/bangdiemmon.php'
                             <label class="input-group-text" for="Lop">Lớp</label>
                         </div>
                         <select class="custom-select" id="Lop">
-                            <option selected value="1">10A1</option>
-                            <option value="2">10A1</option>
-                            <option value="3">10A1</option>
+                            
                         </select>
                     </div>
                 </div>
@@ -48,9 +43,7 @@ require 'controllers/bangdiemmon.php'
                             <label class="input-group-text" for="MonHoc">Môn học</label>
                         </div>
                         <select class="custom-select" id="MonHoc">
-                            <option selected value="1">Tin học</option>
-                            <option value="2">Tin học</option>
-                            <option value="3">Tin học</option>
+                            
                         </select>
                     </div>
                 </div>
@@ -111,6 +104,56 @@ require 'controllers/bangdiemmon.php'
     </div>
 </div>
 <script>
+    $.ajax({
+        type: "POST",
+        url: "controllers/monhoc.php",
+        dataType: "json",
+        success: function(response) {
+            html="";
+            for (value of response) {
+                if(value==0){
+                html+= `<option selected value="${value.MaMonHoc}">${value.TenMonHoc}</option>`;
+                }else{
+                    html+= `<option  value="${value.MaMonHoc}">${value.TenMonHoc}</option>`;
+                }
+            }
+            $('#MonHoc').html(html);
+        }
+    });
+    $.ajax({
+        type: "POST",
+        url: "controllers/namhoc.php",
+        dataType: "json",
+        success: function(response) {
+            html="";
+            for (value of response) {
+                if(value.MaNam=='N1920'){
+                html+= `<option selected value="${value.MaNam}">${value.NamHoc}</option>`;
+                }else{
+                    html+= `<option  value="${value.MaNam}">${value.NamHoc}</option>`;
+                }
+            }
+            $('#NamHoc').html(html);
+        }
+    });
+
+    $.ajax({
+        type: "POST",
+        url: "controllers/lop.php",
+        dataType: "json",
+        success: function(response) {
+            html="";
+            for (value of response) {
+                if(value==0){
+                html+= `<option selected value="${value.MaLop}">${value.TenLop}</option>`;
+                }else{
+                    html+= `<option  value="${value.MaLop}">${value.TenLop}</option>`;
+                }
+            }
+            $('#Lop').html(html);
+        }
+    });
+    
     $(document).ready(function() {
         var th = '<th scope="col">STT</th>';
         th += '<th scope = "col" > Mã học sinh </th>';

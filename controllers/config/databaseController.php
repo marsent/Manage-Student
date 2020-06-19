@@ -1,47 +1,44 @@
- <?php
+<?php
 
-	class DataAccessHelper
+class DataAccessHelper
+{
+	private $conn;
+
+	public function connect()
 	{
-		private $conn;
+		$servername = "localhost:3306";
+		$username = "root";
+		$password = "Tuananh19022k";
+		$dbname = "qlhs";
 
-		public function connect()
-		{
-			$servername = "localhost";
-			$username = "root";
-			$password = "Tuananh19022k";
-			$dbname = "qlhs";
+		// Create connection
+		$GLOBALS['conn'] = new mysqli($servername, $username, $password, $dbname);
 
-			// Create connection
-			$GLOBALS['conn'] = new mysqli($servername, $username, $password, $dbname);
-
-			// Check connection
-			if ($GLOBALS['conn']->connect_error) {
-				die("Connection failed: " . $GLOBALS['conn']->connect_error);
-				
-			}
-			return $GLOBALS['conn'];
+		// Check connection
+		if ($GLOBALS['conn']->connect_error) {
+			die("Connection failed: " . $GLOBALS['conn']->connect_error);
 		}
+		//echo "Connected successfully";
+		return $GLOBALS['conn'];
+	}
 
-		public function executeNonQuery($sql)
-		{
-			if ($GLOBALS['conn']->query($sql) === TRUE) {
-				echo "success";
-			} else {
-				echo "Error: " . $sql . "<br>" . $GLOBALS['conn']->error;
-				return $GLOBALS['conn']->error;
-			}
-		}
-
-		public function executeQuery($sql)
-		{
-			$result = $GLOBALS['conn']->query($sql);
-			return $result;
-		}
-
-		public function close()
-		{
-			mysqli_close($GLOBALS['conn']);
+	public function executeNonQuery($sql)
+	{
+		if ($GLOBALS['conn']->query($sql) === TRUE) {
+			echo "Your query has been executed successfully";
+		} else {
+			echo "Error: " . $sql . "<br>" . $GLOBALS['conn']->error;
 		}
 	}
 
-	?> 
+	public function executeQuery($sql)
+	{
+		$result = $GLOBALS['conn']->query($sql);
+		return $result;
+	}
+
+	public function close()
+	{
+		mysqli_close($GLOBALS['conn']);
+	}
+}
