@@ -52,8 +52,8 @@
 
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 			<div class="navbar-nav">
-				<a class="nav-item nav-link " href="../cnpm-qlhs/hocsinh.php">Học sinh</a>
-				<a class="nav-item nav-link " href="#">Lớp học</a>
+				<a class="nav-item nav-link " href="hocsinh.php">Học sinh</a>
+				<a class="nav-item nav-link " href="qllh.php">Lớp học</a>
 				<div class="dropdown nav-item nav-link " style="cursor: pointer;">
 					<a class=" dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						Môn học
