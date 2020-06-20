@@ -8,7 +8,7 @@ $lop = array();
 while ($rows = $result->fetch_assoc()) {
     $lop[] = array(
         "MaLop" => $rows['MaLop'] ,
-        "TenLop" => $rows['TenLop'],
+        "TenLop" => $rows['TenLop'], 
         "MaKhoiLop"=>$rows['MaKhoiLop'],
         "SiSo"=>$rows['SiSo']
     );

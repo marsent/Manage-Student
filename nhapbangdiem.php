@@ -1,4 +1,6 @@
-<?php include 'View/element/header.php'; ?>
+<?php include 'View/element/header.php';
+
+?>
 <div class="container-fluid">
     <span>
         <h1 style=" text-shadow: black; text-align: center;"> Nhập bảng điểm</h1>
@@ -12,7 +14,7 @@
                             <label class="input-group-text" for="NamHoc">Năm học</label>
                         </div>
                         <select class="custom-select" id="NamHoc">
-                            
+
                         </select>
                     </div>
                 </div>
@@ -33,7 +35,7 @@
                             <label class="input-group-text" for="Lop">Lớp</label>
                         </div>
                         <select class="custom-select" id="Lop">
-                            
+
                         </select>
                     </div>
                 </div>
@@ -43,7 +45,7 @@
                             <label class="input-group-text" for="MonHoc">Môn học</label>
                         </div>
                         <select class="custom-select" id="MonHoc">
-                            
+
                         </select>
                     </div>
                 </div>
@@ -83,16 +85,16 @@
             </div>
             <!-- bảng nhập điểm -->
             <div class="table table-responsive"></div>
-            <table class="table table-striped table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-striped table-bordered" id="Table" width="100%" cellspacing="0">
 
 
-                <thead class="thead-light">
+                <thead class="thead-light" style="text-align: center;">
                     <tr id="labelTable">
 
                     </tr>
                 </thead>
 
-                <tbody id="tableData">
+                <tbody id="tableData" style="text-align: center;">
 
                 </tbody>
 
@@ -103,57 +105,60 @@
         </div>
     </div>
 </div>
+
 <script>
+    /*dropdown môn */
     $.ajax({
         type: "POST",
         url: "controllers/monhoc.php",
         dataType: "json",
         success: function(response) {
-            html="";
+            html = "";
             for (value of response) {
-                if(value==0){
-                html+= `<option selected value="${value.MaMonHoc}">${value.TenMonHoc}</option>`;
-                }else{
-                    html+= `<option  value="${value.MaMonHoc}">${value.TenMonHoc}</option>`;
+                if (value == 0) {
+                    html += `<option selected value="${value.MaMonHoc}">${value.TenMonHoc}</option>`;
+                } else {
+                    html += `<option  value="${value.MaMonHoc}">${value.TenMonHoc}</option>`;
                 }
             }
             $('#MonHoc').html(html);
         }
     });
+    /** dropdown năm */
     $.ajax({
         type: "POST",
         url: "controllers/namhoc.php",
         dataType: "json",
         success: function(response) {
-            html="";
+            html = "";
             for (value of response) {
-                if(value.MaNam=='N1920'){
-                html+= `<option selected value="${value.MaNam}">${value.NamHoc}</option>`;
-                }else{
-                    html+= `<option  value="${value.MaNam}">${value.NamHoc}</option>`;
+                if (value.MaNam == 'N1920') {
+                    html += `<option selected value="${value.MaNam}">${value.NamHoc}</option>`;
+                } else {
+                    html += `<option  value="${value.MaNam}">${value.NamHoc}</option>`;
                 }
             }
             $('#NamHoc').html(html);
         }
     });
-
+    /** dropdown lớp*/
     $.ajax({
         type: "POST",
         url: "controllers/lop.php",
         dataType: "json",
         success: function(response) {
-            html="";
+            html = "";
             for (value of response) {
-                if(value==0){
-                html+= `<option selected value="${value.MaLop}">${value.TenLop}</option>`;
-                }else{
-                    html+= `<option  value="${value.MaLop}">${value.TenLop}</option>`;
+                if (value == 0) {
+                    html += `<option selected value="${value.MaLop}">${value.TenLop}</option>`;
+                } else {
+                    html += `<option  value="${value.MaLop}">${value.TenLop}</option>`;
                 }
             }
             $('#Lop').html(html);
         }
     });
-    
+    /*tạo head table */
     $(document).ready(function() {
         var th = '<th scope="col">STT</th>';
         th += '<th scope = "col" > Mã học sinh </th>';
@@ -166,23 +171,34 @@
         }
         th += ' <th scope="col">Điểm trung bình</th>';
         $('#labelTable').html(th);
-
-        var td = '<tr>';
-        td += `<th scope="row">${++i}</th>`;
-        td += '<td>HS01</td>'
-        td += '<td>Hỷ Hoa Phưn</td>'
-        for (var i = 0; i < $('select[name=15Pcol]').val(); i++) {
-            td += '<td contenteditable></td>'
-        }
-        for (var i = 0; i < $('select[name=1Tcol]').val(); i++) {
-            td += '<td contenteditable></td>'
-        }
-        td += `<td></td>;`
-        td += '</tr>';
-        for (var i = 0; i < 5; i++) td += td;
-        $('#tableData').html(td);
+        /**in danh sách học sinh */
+        $.ajax({
+            type: "POST",
+            url: "controllers/returnhocsinh.php",
+            dataType: "json",
+            success: function(response) {
+                var a = 0;
+                var td = "";
+                for (value of response) {
+                    td += '<tr role="row">';
+                    td += `<th scope="row">${++a}</th>`;
+                    td += `<td id="hs${a}">${value.MaHocSinh}</td>`
+                    td += `<td>${value.HoTen}</td>`
+                    for (var i = 0; i < $('select[name=15Pcol]').val(); i++) {
+                        td += `<td contenteditable  id="${value.MaHocSinh}15p${i+1}"></td>`
+                    }
+                    for (var i = 0; i < $('select[name=1Tcol]').val(); i++) {
+                        td += `<td contenteditable id="${value.MaHocSinh}1t${i+1}"></td>`
+                    }
+                    td += `<td></td>;`
+                    td += '</tr>';
+                }
+                $('#tableData').html(td);
+            }
+        });
     })
 
+    /**tạo bảng điểm */
     $('#taobangdiem').click(function() {
         var th = '<th scope="col">STT</th>';
         th += '<th scope = "col" > Mã học sinh </th>';
@@ -195,7 +211,7 @@
         }
         th += ' <th scope="col">Điểm trung bình</th>';
         $('#labelTable').html(th);
-
+        /*
         var td = '<tr>';
         td += `<th scope="row">${++i}</th>`;
         td += '<td>HS01</td>'
@@ -210,7 +226,77 @@
         td += '</tr>';
         for (var i = 0; i < 10; i++) td += td;
         $('#tableData').html(td);
-        $('#dataTable').DataTable();
+        */
+        $.ajax({
+            type: "POST",
+            url: "controllers/returnhocsinh.php",
+            dataType: "json",
+            success: function(response) {
+                var a = 0;
+                var td = "";
+                for (value of response) {
+                    td += '<tr role="row">';
+                    td += `<th scope="row">${a++}</th>`;
+                    td += `<td>${value.MaHocSinh}</td>`
+                    td += `<td>${value.HoTen}</td>`
+                    for (var i = 0; i < $('select[name=15Pcol]').val(); i++) {
+                        td += '<td contenteditable></td>'
+                    }
+                    for (var i = 0; i < $('select[name=1Tcol]').val(); i++) {
+                        td += '<td contenteditable></td>'
+                    }
+                    td += `<td></td>;`
+                    td += '</tr>';
+                }
+                $('#tableData').html(td);
+            }
+        });
     });
+    /**cập nhật điểm */
+    $('#capnhat').click(function() {
+                var rowLength = document.getElementById('Table').rows.length;
+                for (i = 1; i <= 4; i++) {
+                    var mshs = $(`#hs${i}`).text();
+                    var point15p = new Object();
+                    for (j = 0; j < $('select[name=15Pcol]').val(); j++) {
+                        var kt15p = $(`#${mshs}15p${j+1}`).text();
+                        //console.log(mshs+` kt 15p lan ${j+1}:`+kt15p);
+                        var mbd=$('#MonHoc').val()+mshs;
+                        console.log(mbd);
+                        $.ajax({
+                                type: "POST",
+                                url: "controllers/nhapdiem.php",
+                                data: {
+                                    diem: kt15p,
+                                    mabangdiem: mbd,
+                                    loaihinh:'KT15p'
+                                    },
+                                    dataType: "json",
+                                    success: function(response) {
+                                        console.log(response);
+                                    }
+                                });
+                        }
+                        for (j = 0; j < $('select[name=1Tcol]').val(); j++) {
+                            var kt1t = $(`#${mshs}1t${j+1}`).text();
+                            //console.log(mshs+` kt 1t lan ${j+1}:`+kt1t);
+                            $.ajax({
+                                type: "POST",
+                                url: "controllers/nhapdiem.php",
+                                data: {
+                                    diem: kt1t,
+                                    mabangdiem: mbd,
+                                    loaihinh:'KT1T'
+                                    },
+                                    dataType: "json",
+                                    success: function(response) {
+                                        console.log(response);
+                                    }
+                                });
+                        }
+                    }
+
+                });
 </script>
+
 <?php include 'View/element/footer.php'; ?>
