@@ -255,11 +255,12 @@
     /**cập nhật điểm */
     $('#capnhat').click(function() {
                 var rowLength = document.getElementById('Table').rows.length;
-                for (i = 1; i <= 4; i++) {
+                for (i = 1; i <= rowLength; i++) {
                     var mshs = $(`#hs${i}`).text();
                     var point15p = new Object();
                     for (j = 0; j < $('select[name=15Pcol]').val(); j++) {
                         var kt15p = $(`#${mshs}15p${j+1}`).text();
+                        if(kt15p=="")kt15p=0;
                         //console.log(mshs+` kt 15p lan ${j+1}:`+kt15p);
                         var mbd=$('#MonHoc').val()+mshs;
                         console.log(mbd);
@@ -279,6 +280,7 @@
                         }
                         for (j = 0; j < $('select[name=1Tcol]').val(); j++) {
                             var kt1t = $(`#${mshs}1t${j+1}`).text();
+                            if(kt1t=="") kt1t=0;
                             //console.log(mshs+` kt 1t lan ${j+1}:`+kt1t);
                             $.ajax({
                                 type: "POST",
