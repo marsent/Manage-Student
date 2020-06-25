@@ -55,15 +55,9 @@
 					Môn học
 				</a>
 				<div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
-<<<<<<< HEAD
-					<a class="dropdown-item" href="../cnpm-qlhs/nhapbangdiem.php">Thêm môn học</a>
-					<a class="dropdown-item" href="../cnpm-qlhs/xemketquatheomon">Xem thống kê môn</a>
-					<a class="dropdown-item" href="../cnpm-qlhs/xemketquatheohocky">Xem thống kê học kỳ</a>
-=======
 					<a class="dropdown-item" href="nhapbangdiem.php">Thêm môn học</a>
 					<a class="dropdown-item" href="xemketquatheomon.php">Xem thống kê môn</a>
 					<a class="dropdown-item" href="xemketquatheohocky.php">Xem thống kê học kỳ</a>
->>>>>>> 082f9b8f84de06d1f6f6ee37bb1973c87220f93e
 				</div>
 			</div>
 				<a class="nav-item nav-link " href="#">Quy định</a>
