@@ -31,11 +31,13 @@ include("View/element/header.php");
 								</td>
 							</tr>
 							<tr>
-								<td>
-									<button type="button" class="btn btn-primary btn-sm">Thêm lớp mới</button>
-								</td>
+								<td></td>
+								<td></td>
 							</tr>
 						</table>
+						<div style="text-align:center">
+						<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">Thêm lớp mới</button>
+						</div>
 					</div>
 				</form>
 			</div>
