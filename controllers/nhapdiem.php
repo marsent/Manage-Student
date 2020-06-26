@@ -25,8 +25,9 @@ $monhoc=isset($_POST['monhoc'])?mysqli_escape_string($conn,$_POST['monhoc']):"";
      $sql="update 
     bangdiemmon join quatrinhhoc 
     on bangdiemmon.MaQTHoc=quatrinhhoc.MaQTHoc
+    join hocky on quatrinhhoc.mahocky=hocky.mahocky
     set KiemTra15pl1='$kt15p1',KiemTra15pl2='$kt15p2',KiemTra15pl3='$kt15p3',KiemTra1tl1='$kt1t1',KiemTra1tl2='$kt1t2',ThiHocKy='$THK',DiemTBMon='$DTB'
-    where MaHocSinh='$mshs' and mahocky='".$hocky.$namhoc."' and mamonhoc='$monhoc' and malop='$lop'";
+    where mahocsinh='$mshs' and mamonhoc='$monhoc' and malop='$lop' and manam='$namhoc' and hocky='$hocky'";
     if($conn->query($sql)==true){
         $error[]=array(
             "error"=>false
