@@ -143,16 +143,7 @@
             },
             dataType: "json",
             success: function (response) {
-                var error = false;
-                var message = "";
-                for (i of response) {
-                    if (i.error == true) {
-                        error = true;
-                        message = i.message;
-                    }
-                }
-                if (error == false) alert("tạo bảng điểm thành công");
-                else alert('Bảng Điểm đã có vui lòng nhập điểm học sinh ');
+               alert(response[0].message);
             }
         });
 
@@ -258,7 +249,11 @@
             //         }
             //     });
             // }
-            if (i == rowLength - 1) alert("Nhập điểm hoàn tất");
+            if (i == rowLength - 1) {
+                setTimeout(()=>{
+                    alert("Cập nhật bảng điểm thành công");
+                },1000)
+            }
         }
 
         setTimeout(() => {
