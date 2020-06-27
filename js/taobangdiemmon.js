@@ -207,7 +207,7 @@
             THK > 10 ? THK = 10 : THK = THK;
             THK < 0 ? THK = 0 : THK = THK;
 
-            var DTB = (kt15p1 + kt15p2 + kt15p3 + kt1t1 * 2 + kt1t2 * 2 + THK * 3) / 10
+            var DTB = (kt15p1 + kt15p2 + kt15p3 + kt1t1 * 2 + kt1t2 * 2 + THK * 3) / 10;
             var hocsinh = {
                 mshs: mshs,
                 kt15p1: kt15p1,
@@ -280,6 +280,9 @@
         }, 1000);
         setTimeout(() => {
             update_CT_BCTKM(namhoc, hocky, lop, monhoc)
+        }, 1500);
+        setTimeout(() => {
+            update_BCTKHK(namhoc, hocky, lop, monhoc)
         }, 1500);
     });
 
@@ -355,9 +358,20 @@
                 hocky: hocky,
                 lop: lop,
                 monhoc: monhoc
-            },
-            success: function (response) {
-              console.log(response);
             }
         });
     }
+    function update_BCTKHK(namhoc, hocky, lop, monhoc) {
+        $.ajax({
+            type: "POST",
+            url: "controllers/update_bctkhk.php",
+            dataType: "json",
+            data: {
+                namhoc: namhoc,
+                hocky: hocky,
+                lop: lop,
+                monhoc: monhoc
+            }
+        });
+    }
+    
