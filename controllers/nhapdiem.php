@@ -1,5 +1,4 @@
 <?php require 'config/databaseController.php';
-
 $conn = new DataAccessHelper();
 $conn = $conn->connect();
 
@@ -40,5 +39,5 @@ $monhoc=isset($_POST['monhoc'])?mysqli_escape_string($conn,$_POST['monhoc']):"";
         );
     }
 
-
 echo json_encode($error);
+$conn->close();

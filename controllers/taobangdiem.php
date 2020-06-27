@@ -28,15 +28,16 @@ on quatrinhhoc.mahocky=hocky.mahocky WHERE MaLop='$lop' AND MaNam='$namhoc' and 
         $conn->query($sql);
     }
 
-    $error[]=array(
-        "error"=>false,
-        "message"=>"Tạo bảng điểm mới thành công"
+    $error[] = array(
+        "error" => false,
+        "message" => "Tạo bảng điểm mới thành công"
+    );
+} else {
+    $error[] = array(
+        "error" => true,
+        "message" => "Bảng điểm đã tồn tại vui lòng nhập lại điểm cho học sinh"
     );
 }
-else{
-    $error[]=array(
-        "error"=>true,
-        "message"=>"Bảng điểm đã tồn tại vui lòng nhập lại điểm cho học sinh"
-    );
-}
+
 echo json_encode($error);
+$conn->close();

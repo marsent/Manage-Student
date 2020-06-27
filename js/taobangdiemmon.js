@@ -43,65 +43,65 @@
         var namhoc = $('#NamHoc').val();
         var hocky = $('#HocKy').val();
         returnLop(namhoc, hocky);
-    });
-
-    /*tạo head table */
-    // $(document).ready(function() {
-    //     var th = '<th scope="col">STT</th>';
-    //     th += '<th scope = "col" > Mã học sinh </th>';
-    //     th += '<th scope = "col" > Họ tên </th>';
-    //     for (var i = 0; i < $('select[name=15Pcol]').val(); i++) {
-    //         th += '<th scope="col">Điểm 15p</th>';
-    //     }
-    //     for (var i = 0; i < $('select[name=1Tcol]').val(); i++) {
-    //         th += '<th scope="col">Điểm 1T</th>';
-    //     }
-    //     th += ' <th scope="col">Điểm trung bình</th>';
-    //     $('#labelTable').html(th);
-    //     /**in danh sách học sinh */
-    //     $.ajax({
-    //         type: "POST",
-    //         url: "controllers/returnhocsinh.php",
-    //         dataType: "json",
-    //         success: function(response) {
-    //             var a = 0;
-    //             var td = "";
-    //             for (value of response) {
-    //                 td += '<tr role="row">';
-    //                 td += `<th scope="row">${++a}</th>`;
-    //                 td += `<td id="hs${a}">${value.MaHocSinh}</td>`
-    //                 td += `<td>${value.HoTen}</td>`
-    //                 for (var i = 0; i < $('select[name=15Pcol]').val(); i++) {
-    //                     td += `<td contenteditable  id="${value.MaHocSinh}15p${i+1}"></td>`
-    //                 }
-    //                 for (var i = 0; i < $('select[name=1Tcol]').val(); i++) {
-    //                     td += `<td contenteditable id="${value.MaHocSinh}1t${i+1}"></td>`
-    //                 }
-    //                 td += `<td></td>;`
-    //                 td += '</tr>';
-    //             }
-    //             $('#tableData').html(td);
-    //         }
-    //     });
-    // })
-
+    }); {
+        /*tạo head table */
+        // $(document).ready(function() {
+        //     var th = '<th scope="col">STT</th>';
+        //     th += '<th scope = "col" > Mã học sinh </th>';
+        //     th += '<th scope = "col" > Họ tên </th>';
+        //     for (var i = 0; i < $('select[name=15Pcol]').val(); i++) {
+        //         th += '<th scope="col">Điểm 15p</th>';
+        //     }
+        //     for (var i = 0; i < $('select[name=1Tcol]').val(); i++) {
+        //         th += '<th scope="col">Điểm 1T</th>';
+        //     }
+        //     th += ' <th scope="col">Điểm trung bình</th>';
+        //     $('#labelTable').html(th);
+        //     /**in danh sách học sinh */
+        //     $.ajax({
+        //         type: "POST",
+        //         url: "controllers/returnhocsinh.php",
+        //         dataType: "json",
+        //         success: function(response) {
+        //             var a = 0;
+        //             var td = "";
+        //             for (value of response) {
+        //                 td += '<tr role="row">';
+        //                 td += `<th scope="row">${++a}</th>`;
+        //                 td += `<td id="hs${a}">${value.MaHocSinh}</td>`
+        //                 td += `<td>${value.HoTen}</td>`
+        //                 for (var i = 0; i < $('select[name=15Pcol]').val(); i++) {
+        //                     td += `<td contenteditable  id="${value.MaHocSinh}15p${i+1}"></td>`
+        //                 }
+        //                 for (var i = 0; i < $('select[name=1Tcol]').val(); i++) {
+        //                     td += `<td contenteditable id="${value.MaHocSinh}1t${i+1}"></td>`
+        //                 }
+        //                 td += `<td></td>;`
+        //                 td += '</tr>';
+        //             }
+        //             $('#tableData').html(td);
+        //         }
+        //     });
+        // })
+    }
     /**tạo bảng điểm */
     $('#taobangdiem').click(function () {
         var namhoc = $('#NamHoc').val();
         var hocky = $('#HocKy').val();
         var lop = $('#Lop').val();
-        var monhoc = $('#MonHoc').val();
-        // var th = '<th scope="col">STT</th>';
-        // th += '<th scope = "col" > Mã học sinh </th>';
-        // th += '<th scope = "col" > Họ tên </th>';
-        // for (var i = 0; i < $('select[name=15Pcol]').val(); i++) {
-        //     th += '<th scope="col">Điểm 15p</th>';
-        // }
-        // for (var i = 0; i < $('select[name=1Tcol]').val(); i++) {
-        //     th += '<th scope="col">Điểm 1T</th>';
-        // }
-        // th += ' <th scope="col">Điểm trung bình</th>';
-        // $('#labelTable').html(th);
+        var monhoc = $('#MonHoc').val(); {
+            // var th = '<th scope="col">STT</th>';
+            // th += '<th scope = "col" > Mã học sinh </th>';
+            // th += '<th scope = "col" > Họ tên </th>';
+            // for (var i = 0; i < $('select[name=15Pcol]').val(); i++) {
+            //     th += '<th scope="col">Điểm 15p</th>';
+            // }
+            // for (var i = 0; i < $('select[name=1Tcol]').val(); i++) {
+            //     th += '<th scope="col">Điểm 1T</th>';
+            // }
+            // th += ' <th scope="col">Điểm trung bình</th>';
+            // $('#labelTable').html(th);
+        }
         if (lop == null) {
             alert("Lớp rỗng không thể tạo bảng điểm lớp");
             return;
@@ -143,13 +143,30 @@
             },
             dataType: "json",
             success: function (response) {
-               alert(response[0].message);
+                if (response[0].error == false) {
+                    $.ajax({
+                        type: "POST",
+                        url: "controllers/taobaocaothongkemon.php",
+                        data: {
+                            namhoc: namhoc,
+                            hocky: hocky,
+                            lop: lop,
+                            monhoc: monhoc
+                        },
+                        dataType: "json",
+                        success: function (response) {
+                            console.log(response);
+                        }
+                    });
+                }
+                alert(response[0].message);
+
             }
         });
 
         setTimeout(() => {
             returnBangdiem(namhoc, hocky, lop, monhoc);
-        }, 1000)
+        }, 1500);
         $('#capnhat').show();
     });
     /**cập nhật điểm */
@@ -212,54 +229,58 @@
                 data: hocsinh,
             });
 
-            // for (j = 0; j < 3; j++) {
-            //     var kt15p = $(`#${mshs}15p${j+1}`).text();
-            //     if (kt15p == "") kt15p = 0;
-            //     var mbd = $('#MonHoc').val() + mshs;
-            //     console.log(kt15p);
-            //     $.ajax({
-            //         type: "POST",
-            //         url: "controllers/nhapdiem.php",
-            //         data: {
-            //             diem: kt15p,
-            //             mabangdiem: mbd,
-            //             loaihinh: 'KT15p'
-            //         },
-            //         dataType: "json",
-            //         success: function(response) {
-            //             console.log(response);
-            //         }
-            //     });
-            // }
-            // for (j = 0; j < 2; j++) {
-            //     var kt1t = $(`#${mshs}1t${j+1}`).text();
-            //     if (kt1t == "") kt1t = 0;
-            //     console.log(kt1t);
-            //     $.ajax({
-            //         type: "POST",
-            //         url: "controllers/nhapdiem.php",
-            //         data: {
-            //             diem: kt1t,
-            //             mabangdiem: mbd,
-            //             loaihinh: 'KT1T'
-            //         },
-            //         dataType: "json",
-            //         success: function(response) {
-            //             console.log(response);
-            //         }
-            //     });
-            // }
+            {
+                // for (j = 0; j < 3; j++) {
+                //     var kt15p = $(`#${mshs}15p${j+1}`).text();
+                //     if (kt15p == "") kt15p = 0;
+                //     var mbd = $('#MonHoc').val() + mshs;
+                //     console.log(kt15p);
+                //     $.ajax({
+                //         type: "POST",
+                //         url: "controllers/nhapdiem.php",
+                //         data: {
+                //             diem: kt15p,
+                //             mabangdiem: mbd,
+                //             loaihinh: 'KT15p'
+                //         },
+                //         dataType: "json",
+                //         success: function(response) {
+                //             console.log(response);
+                //         }
+                //     });
+                // }
+                // for (j = 0; j < 2; j++) {
+                //     var kt1t = $(`#${mshs}1t${j+1}`).text();
+                //     if (kt1t == "") kt1t = 0;
+                //     console.log(kt1t);
+                //     $.ajax({
+                //         type: "POST",
+                //         url: "controllers/nhapdiem.php",
+                //         data: {
+                //             diem: kt1t,
+                //             mabangdiem: mbd,
+                //             loaihinh: 'KT1T'
+                //         },
+                //         dataType: "json",
+                //         success: function(response) {
+                //             console.log(response);
+                //         }
+                //     });
+                // }
+            }
             if (i == rowLength - 1) {
-                setTimeout(()=>{
+                setTimeout(() => {
                     alert("Cập nhật bảng điểm thành công");
-                },1000)
+                }, 1000)
             }
         }
 
         setTimeout(() => {
             returnBangdiem(namhoc, hocky, lop, monhoc);
-        }, 1000)
-
+        }, 1000);
+        setTimeout(() => {
+            update_CT_BCTKM(namhoc, hocky, lop, monhoc)
+        }, 1500);
     });
 
     $('#capnhat').hide();
@@ -320,6 +341,23 @@
                     }
                 }
                 $('#Lop').html(html);
+            }
+        });
+    }
+
+    function update_CT_BCTKM(namhoc, hocky, lop, monhoc) {
+        $.ajax({
+            type: "POST",
+            url: "controllers/update_ct_bctkm.php",
+            dataType: "json",
+            data: {
+                namhoc: namhoc,
+                hocky: hocky,
+                lop: lop,
+                monhoc: monhoc
+            },
+            success: function (response) {
+              console.log(response);
             }
         });
     }

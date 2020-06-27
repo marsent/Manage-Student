@@ -11,3 +11,5 @@ for ($i=1;$i<=10;$i++){
     $conn->query($sql);
     echo $conn->error;
 }
+
+$conn->close();
