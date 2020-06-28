@@ -227,6 +227,7 @@
                 type: "POST",
                 url: "controllers/nhapdiem.php",
                 data: hocsinh,
+                
             });
 
             {
