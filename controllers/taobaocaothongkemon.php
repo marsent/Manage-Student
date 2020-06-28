@@ -9,14 +9,10 @@ $hocky = $_POST['hocky'];
 $lop = $_POST['lop'];
 $monhoc = $_POST['monhoc'];
 
-$sql = "select mahocky from hocky where hocky='$hocky' and manam='$namhoc'";
+$sql = "SELECT mahocky from hocky where hocky='$hocky' and manam='$namhoc'";
 $mahocky = $conn->query($sql);
-$mhk = "";
-foreach ($mahocky as $value) {
-    $mhk = $value['mahocky'];
-}
-
-$sql = "select * from 
+$mhk = $mahocky->fetch_row()[0];
+$sql = "SELECT * from 
 baocaothongkemon join monhoc 
 on baocaothongkemon.mamonhoc=monhoc.mamonhoc
 join hocky on hocky.mahocky=baocaothongkemon.mahocky
