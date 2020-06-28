@@ -2,7 +2,7 @@
 
 $conn = new DataAccessHelper();
 $conn = $conn->connect();
-$sql = "select * from lop";
+$sql = "SELECT * FROM lop";
 $result = $conn->query($sql);
 $lop = array();
 while ($rows = $result->fetch_assoc()) {

@@ -6,10 +6,10 @@ class DataAccessHelper
 
 	public function connect()
 	{
-		$servername = "localhost:3306";
+		$servername = "localhost";
 		$username = "root";
-		$password = "Tuananh19022k";
-		$dbname = "qlhs";
+		$password = "";
+		$dbname = "congnghephanmem";
 
 		// Create connection
 		$GLOBALS['conn'] = new mysqli($servername, $username, $password, $dbname);
