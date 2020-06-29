@@ -48,17 +48,42 @@ require "controllers/qllh-submit.php";
 				</div>
 				<div class="card-body">
 					<div class="table-wrapper-scroll-y my-custom-scrollbar" style="height:300px">
-						<select name="" id="" style="margin-bottom: 21px;">
-							<option value="">10A1</option>
-							<option value="">10A2</option>
-							<option value="">10A3</option>
-							<option value="">11A1</option>
-							<option value="">11A2</option>
-							<option value="">11A3</option>	
-							<option value="">12A1</option>
-							<option value="">12A2</option>
-							<option value="">12A3</option>
-						</select>
+						<form method="POST">
+							<select name="lopmay" id="" style="margin-bottom: 21px;">
+								<?php
+											$sql_select="SELECT * FROM lop";
+											$result_select=mysqli_query($conn, $sql_select);
+											if($result_select->num_rows>0){
+												while($row=mysqli_fetch_assoc($result_select)){	
+													echo "<option value='$row[MaLop]'>$row[TenLop]</option>";
+												}
+											}
+								?>
+							</select>
+							<select name="hocky" id="" style="margin-bottom: 21px;">
+								<?php
+											$sql_select="SELECT DISTINCT HocKy FROM hocky";
+											$result_select=mysqli_query($conn, $sql_select);
+											if($result_select->num_rows>0){
+												while($row=mysqli_fetch_assoc($result_select)){	
+													echo "<option value='$row[HocKy]'>$row[HocKy]</option>";
+												}
+											}
+								?>
+							</select>
+							<select name="namhoc" id="" style="margin-bottom: 21px;">
+								<?php
+											$sql_select="SELECT DISTINCT MaNam FROM HocKy";
+											$result_select=mysqli_query($conn, $sql_select);
+											if($result_select->num_rows>0){
+												while($row=mysqli_fetch_assoc($result_select)){	
+													echo "<option value='$row[MaNam]'>$row[MaNam]</option>";
+												}
+											}
+								?>
+							</select>
+							<button type="submit" name="chonlop" class="btn btn-primary" >Chọn</button>
+						</form>
 						<table class="table table-bordered table-striped mb-0">
 							<thead>
 								<tr>
@@ -68,18 +93,38 @@ require "controllers/qllh-submit.php";
 									<th scope="col">Giới tính</th>
 									<th scope="col">Năm sinh</th>
 									<th scope="col">Địa chỉ</th>
+									<th scope="col">Email</th>
 								</tr>
 							</thead>
 							<tbody>
+								<?php
+									if(isset($_POST["lopmay"])&&isset($_POST["chonlop"])&&isset($_POST["hocky"])&&isset($_POST["namhoc"])){
+										$chonlophoc=$_POST["lopmay"];
+										$hocky=$_POST["hocky"];
+										$namhoc=$_POST["namhoc"];
+										$sql_lop="SELECT DISTINCT * FROM hocsinh h, quatrinhhoc q, hocky hk
+												WHERE h.MaHocSinh=q.MaHocSinh AND hk.MaHocKy=q.MaHocKy AND q.MaLop='$chonlophoc'
+												AND hk.HocKy='$hocky' AND hk.MaNam='$namhoc'";
+										$result_lop=mysqli_query($conn, $sql_lop);
+										if($result_lop->num_rows>0){
+											$count=0;
+											while($row=mysqli_fetch_assoc($result_lop)){
+												$count++;								
+								?>
 								<tr>
-									<th scope="row">1</th>
-									<td>HS01</td>
-									<td>Đào Huỳnh Minh Thuận</td>
-									<td>Nam</td>
-									<td>2000</td>
-									<td>KTX khu B</td>
+									<th scope="row"><?php echo $count; ?></th>
+									<td><?php echo $row["MaHocSinh"]; ?></td>
+									<td><?php echo $row["HoTen"]; ?></td>
+									<td><?php echo $row["GioiTinh"]; ?></td>
+									<td><?php echo $row["NgaySinh"]; ?></td>
+									<td><?php echo $row["DiaChi"]; ?></td>
+									<td><?php echo $row["Email"]; ?></td>
 								</tr>
-								
+								<?php
+											}
+										}
+									}
+								?>
 
 							</tbody>
 						</table>

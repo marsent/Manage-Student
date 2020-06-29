@@ -9,7 +9,7 @@ class DataAccessHelper
 		$servername = "localhost";
 		$username = "root";
 		$password = "";
-		$dbname = "congnghephanmem";
+		$dbname = "newcnpm";
 
 		// Create connection
 		$GLOBALS['conn'] = new mysqli($servername, $username, $password, $dbname);
