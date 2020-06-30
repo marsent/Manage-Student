@@ -73,11 +73,11 @@ require "controllers/qllh-submit.php";
 							</select>
 							<select name="namhoc" id="" style="margin-bottom: 21px;">
 								<?php
-											$sql_select="SELECT DISTINCT MaNam FROM HocKy";
+											$sql_select="SELECT DISTINCT * FROM namhoc";
 											$result_select=mysqli_query($conn, $sql_select);
 											if($result_select->num_rows>0){
 												while($row=mysqli_fetch_assoc($result_select)){	
-													echo "<option value='$row[MaNam]'>$row[MaNam]</option>";
+													echo "<option value='$row[MaNam]'>$row[NamHoc]</option>";
 												}
 											}
 								?>
