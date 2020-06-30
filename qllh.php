@@ -1,5 +1,6 @@
 <?php
 include("View/element/header.php");
+require "controllers/qllh-submit.php";
 ?>
 <div class="container-fluid">
 	<h1 style="text-align: center">THÔNG TIN LỚP HỌC</h1>
@@ -9,25 +10,25 @@ include("View/element/header.php");
 				<div class="card-header">
 					Thông tin lớp học
 				</div>
-				<form action="#" method="post">
+				<form  method="POST">
 					<div class="card-body">
 						<table class="table">
 							<tr>
 								<td>Mã khối: </td>
 								<td>
-									<input type="text" style="margin-left:60px">
+									<input type="text" name="MaKhoiLop" style="margin-left:60px" required>
 								</td>
 							</tr>
 							<tr>
 								<td>Mã lớp học: </td>
 								<td>
-									<input type="text" style="margin-left:60px">
+									<input type="text" name="MaLop" style="margin-left:60px" required>
 								</td>
 							</tr>
 							<tr>
 								<td>Tên lớp học: </td>
 								<td>
-									<input type="text" style="margin-left:60px">
+									<input type="text" name="TenLop" style="margin-left:60px" required>
 								</td>
 							</tr>
 							<tr>
@@ -36,7 +37,7 @@ include("View/element/header.php");
 							</tr>
 						</table>
 						<div style="text-align:center">
-						<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">Thêm lớp mới</button>
+							<button type="submit" name="submit" class="btn btn-primary" >Thêm lớp mới</button>
 						</div>
 					</div>
 				</form>
@@ -47,17 +48,42 @@ include("View/element/header.php");
 				</div>
 				<div class="card-body">
 					<div class="table-wrapper-scroll-y my-custom-scrollbar" style="height:300px">
-						<select name="" id="" style="margin-bottom: 21px;">
-							<option value="">10A1</option>
-							<option value="">10A2</option>
-							<option value="">10A3</option>
-							<option value="">11A1</option>
-							<option value="">11A2</option>
-							<option value="">11A3</option>
-							<option value="">12A1</option>
-							<option value="">12A2</option>
-							<option value="">12A3</option>
-						</select>
+						<form method="POST">
+							<select name="lopmay" id="" style="margin-bottom: 21px;">
+								<?php
+											$sql_select="SELECT * FROM lop";
+											$result_select=mysqli_query($conn, $sql_select);
+											if($result_select->num_rows>0){
+												while($row=mysqli_fetch_assoc($result_select)){	
+													echo "<option value='$row[MaLop]'>$row[TenLop]</option>";
+												}
+											}
+								?>
+							</select>
+							<select name="hocky" id="" style="margin-bottom: 21px;">
+								<?php
+											$sql_select="SELECT DISTINCT HocKy FROM hocky";
+											$result_select=mysqli_query($conn, $sql_select);
+											if($result_select->num_rows>0){
+												while($row=mysqli_fetch_assoc($result_select)){	
+													echo "<option value='$row[HocKy]'>$row[HocKy]</option>";
+												}
+											}
+								?>
+							</select>
+							<select name="namhoc" id="" style="margin-bottom: 21px;">
+								<?php
+											$sql_select="SELECT DISTINCT * FROM namhoc";
+											$result_select=mysqli_query($conn, $sql_select);
+											if($result_select->num_rows>0){
+												while($row=mysqli_fetch_assoc($result_select)){	
+													echo "<option value='$row[MaNam]'>$row[NamHoc]</option>";
+												}
+											}
+								?>
+							</select>
+							<button type="submit" name="chonlop" class="btn btn-primary" >Chọn</button>
+						</form>
 						<table class="table table-bordered table-striped mb-0">
 							<thead>
 								<tr>
@@ -67,81 +93,38 @@ include("View/element/header.php");
 									<th scope="col">Giới tính</th>
 									<th scope="col">Năm sinh</th>
 									<th scope="col">Địa chỉ</th>
+									<th scope="col">Email</th>
 								</tr>
 							</thead>
 							<tbody>
+								<?php
+									if(isset($_POST["lopmay"])&&isset($_POST["chonlop"])&&isset($_POST["hocky"])&&isset($_POST["namhoc"])){
+										$chonlophoc=$_POST["lopmay"];
+										$hocky=$_POST["hocky"];
+										$namhoc=$_POST["namhoc"];
+										$sql_lop="SELECT DISTINCT * FROM hocsinh h, quatrinhhoc q, hocky hk
+												WHERE h.MaHocSinh=q.MaHocSinh AND hk.MaHocKy=q.MaHocKy AND q.MaLop='$chonlophoc'
+												AND hk.HocKy='$hocky' AND hk.MaNam='$namhoc'";
+										$result_lop=mysqli_query($conn, $sql_lop);
+										if($result_lop->num_rows>0){
+											$count=0;
+											while($row=mysqli_fetch_assoc($result_lop)){
+												$count++;								
+								?>
 								<tr>
-									<th scope="row">1</th>
-									<td>HS01</td>
-									<td>Đào Huỳnh Minh Thuận</td>
-									<td>Nam</td>
-									<td>2000</td>
-									<td>KTX khu B</td>
+									<th scope="row"><?php echo $count; ?></th>
+									<td><?php echo $row["MaHocSinh"]; ?></td>
+									<td><?php echo $row["HoTen"]; ?></td>
+									<td><?php echo $row["GioiTinh"]; ?></td>
+									<td><?php echo $row["NgaySinh"]; ?></td>
+									<td><?php echo $row["DiaChi"]; ?></td>
+									<td><?php echo $row["Email"]; ?></td>
 								</tr>
-								<tr>
-									<th scope="row">1</th>
-									<td>HS01</td>
-									<td>Đào Huỳnh Minh Thuận</td>
-									<td>Nam</td>
-									<td>2000</td>
-									<td>KTX khu B</td>
-								</tr>
-								<tr>
-									<th scope="row">1</th>
-									<td>HS01</td>
-									<td>Đào Huỳnh Minh Thuận</td>
-									<td>Nam</td>
-									<td>2000</td>
-									<td>KTX khu B</td>
-								</tr>
-								<tr>
-									<th scope="row">1</th>
-									<td>HS01</td>
-									<td>Đào Huỳnh Minh Thuận</td>
-									<td>Nam</td>
-									<td>2000</td>
-									<td>KTX khu B</td>
-								</tr>
-								<tr>
-									<th scope="row">1</th>
-									<td>HS01</td>
-									<td>Đào Huỳnh Minh Thuận</td>
-									<td>Nam</td>
-									<td>2000</td>
-									<td>KTX khu B</td>
-								</tr>
-								<tr>
-									<th scope="row">1</th>
-									<td>HS01</td>
-									<td>Đào Huỳnh Minh Thuận</td>
-									<td>Nam</td>
-									<td>2000</td>
-									<td>KTX khu B</td>
-								</tr>
-								<tr>
-									<th scope="row">1</th>
-									<td>HS01</td>
-									<td>Đào Huỳnh Minh Thuận</td>
-									<td>Nam</td>
-									<td>2000</td>
-									<td>KTX khu B</td>
-								</tr>
-								<tr>
-									<th scope="row">1</th>
-									<td>HS01</td>
-									<td>Đào Huỳnh Minh Thuận</td>
-									<td>Nam</td>
-									<td>2000</td>
-									<td>KTX khu B</td>
-								</tr>
-								<tr>
-									<th scope="row">1</th>
-									<td>HS01</td>
-									<td>Đào Huỳnh Minh Thuận</td>
-									<td>Nam</td>
-									<td>2000</td>
-									<td>KTX khu B</td>
-								</tr>
+								<?php
+											}
+										}
+									}
+								?>
 
 							</tbody>
 						</table>
@@ -160,91 +143,37 @@ include("View/element/header.php");
 						<table class="table table-bordered table-striped mb-0"">
 							<thead>
 								<tr>
-									<th scope=" col">STT</th>
-									<th scope="col">Mã lớp</th>
-									<th scope="col">Tên lớp học</th>
-									<th scope="col">Sĩ số</th>
-									<th scope="col">Thao tác</th>
+									
+											<th scope=" col">STT</th>
+											<th scope="col">Mã lớp</th>
+											<th scope="col">Tên lớp học</th>
+											<th scope="col">Sĩ số</th>
+											<th scope="col">Thao tác</th>
+									
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<th scope="row">1</th>
-									<td>L10A1</td>
-									<td>10A1</td>
-									<td>30</td>
-									<td><button class="btn btn-primary"> Sửa</button></td>
-								</tr>
-								<tr>
-									<th scope="row">1</th>
-									<td>L10A1</td>
-									<td>10A1</td>
-									<td>30</td>
-									<td><button class="btn btn-primary"> Sửa</button></td>
-								</tr>
-								<tr>
-									<th scope="row">1</th>
-									<td>L10A1</td>
-									<td>10A1</td>
-									<td>30</td>
-									<td><button class="btn btn-primary"> Sửa</button></td>
-								</tr>
-								<tr>
-									<th scope="row">1</th>
-									<td>L10A1</td>
-									<td>10A1</td>
-									<td>30</td>
-									<td><button class="btn btn-primary"> Sửa</button></td>
-								</tr>
-								<tr>
-									<th scope="row">1</th>
-									<td>L10A1</td>
-									<td>10A1</td>
-									<td>30</td>
-									<td><button class="btn btn-primary"> Sửa</button></td>
-								</tr>
-								<tr>
-									<th scope="row">1</th>
-									<td>L10A1</td>
-									<td>10A1</td>
-									<td>30</td>
-									<td><button class="btn btn-primary"> Sửa</button></td>
-								</tr>
-								<tr>
-									<th scope="row">1</th>
-									<td>L10A1</td>
-									<td>10A1</td>
-									<td>30</td>
-									<td><button class="btn btn-primary"> Sửa</button></td>
-								</tr>
-								<tr>
-									<th scope="row">1</th>
-									<td>L10A1</td>
-									<td>10A1</td>
-									<td>30</td>
-									<td><button class="btn btn-primary"> Sửa</button></td>
-								</tr>
-								<tr>
-									<th scope="row">1</th>
-									<td>L10A1</td>
-									<td>10A1</td>
-									<td>30</td>
-									<td><button class="btn btn-primary"> Sửa</button></td>
-								</tr>
-								<tr>
-									<th scope="row">1</th>
-									<td>L10A1</td>
-									<td>10A1</td>
-									<td>30</td>
-									<td><button class="btn btn-primary"> Sửa</button></td>
-								</tr>
-								<tr>
-									<th scope="row">1</th>
-									<td>L10A1</td>
-									<td>10A1</td>
-									<td>30</td>
-									<td><button class="btn btn-primary"> Sửa</button></td>
-								</tr>
+							<?php
+									$sql_select="SELECT * FROM lop";
+									$result_select=mysqli_query($conn, $sql_select);
+									if($result_select->num_rows>0){
+										$count=0;
+										while($row=mysqli_fetch_assoc($result_select)){	
+											$count ++ ;
+								?>
+									<tr>
+										<th scope="row"><?php echo "$count"; ?></th>
+										<td><?php echo "$row[MaLop]"; ?></td>
+										<td><?php echo "$row[TenLop]"; ?></td>
+										<td><?php echo "$row[SiSo]"; ?></td> 
+										<td><button class="btn btn-primary"> Sửa</button></td>
+									</tr>
+								<?php
+										}
+									} 
+								?>
+								
+								
 							</tbody>
 						</table>
 					</div>

@@ -1,29 +1,44 @@
+<<<<<<< HEAD
 <?php
 require './config/databaseController.php';
+=======
+<?php require 'config/databaseController.php';
+>>>>>>> b92396f32b5f24be7fdd2eef14476b07fc0fc2ff
 $mhs=$_POST['MSHS'];
 $name=$_POST['Name'];
 $gender=$_POST['Gender'];
 $date=$_POST['Date'];
 $address=$_POST['Address'];
 $email=$_POST['Email'];
+$class=$_POST['Class'];
 
-
+$report=array();
 $db = new DataAccessHelper();
 $conn=$db->connect();
 
+$sql1='select *
+from ((lop 
+  INNER join khoilop on khoilop.MaKhoiLop=lop.MaKhoiLop)
+  INNER join hocky on hocky.MaNam=khoilop.MaNam)
+WHERE lop.MaLop like "'.$class.'"
+ORDER BY MaHocKy DESC LIMIT 1
+';
+$result1 = $conn->query($sql1);
+$rows = mysqli_fetch_assoc($result1);
+$mhk = $rows['MaHocKy'];
+$ml = $rows['MaLop'];
+$mqt= $mhs.$rows['TenLop'].$mhk;
 $sql="INSERT INTO `hocsinh`(`MaHocSinh`, `HoTen`, `GioiTinh`, `NgaySinh`, `DiaChi`, `Email`)
 VALUES ('$mhs','$name','$gender','$date','$address','$email')";
-$report=$db->executeNonQuery($sql);
 if($db->executeNonQuery($sql) == TRUE) {
   $report[]=array(
     'message' => true, 
     'error'=>''
   );
-//   $mlop=$_POST['Class'];
-//   $mhk=$rows['MaHocky'];
-//   $mqth=$mhs.$mlop.$mhk;
-//   $sql="INSERT INTO `quatrinhhoc`(`MaQTHoc`, `MaHocSinh`, `MaLop`, `MaHocKy`, `DiemTBHK`)
-// VALUES ('$mqth'.'$mhs','$mlop','$mhk','')";
+  
+  $sql2="INSERT INTO `quatrinhhoc`(`MaQTHoc`, `MaHocSinh`, `MaLop`, `MaHocky`, `DiemTBHK`)
+  VALUES ('$mqt','$mhs', '$ml','$mhk','')";
+  $conn->query($sql2);
 }
 else{
   $report[]=array(
@@ -32,12 +47,5 @@ else{
   );
 }
 $conn->close();
-echo json_encode ( $report ) ;
-// $sql_2="SELECT MaHocKy
-// FROM hocky join namhoc hocky.MaNamHoc=namhoc.Manamhoc
-// where (NamHoc='$namhoc'
-// and Hocky like '$hocky')
-// ";
-// $result = $conn->query($sql_2);
-// $rows = $result->fetch_assoc();
+echo json_encode ($report,JSON_OBJECT_AS_ARRAY) ;
 ?>

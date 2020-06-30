@@ -6,13 +6,62 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-        function checkbox(Id) {
+        var helpers =
+        {
+            buildDropdown: function(result, dropdown, emptyMessage, idname)
+            {
+                // Remove current options
+                dropdown.html('');
+                // Add the empty option with the empty message
+                dropdown.append('<option value="">' + emptyMessage + '</option>');
+                // Check result isnt empty
+                if(result != '')
+                {
+                    // Loop through each of the results and append the option to the dropdown
+                    $.each(result, function(k, v) {
+                        dropdown.append('<option value="' + v.id + '" id="'+ idname +'">' + v.name + '</option>');
+                    });
+                }
+            }
+        }
+            function checkbox(Id) {
             var checkbox = document.getElementsByName(Id);
             for (var i = 0; i < checkbox.length; i++) {
                 if (checkbox[i].checked === true) {
                     return checkbox[i].value;
                 }
             }
+        }
+        function xemdslop()
+        {
+            const Class= document.getElementById("xemlop").value;
+            const data = {
+				Class: Class,
+            };
+            $.ajax({
+            type: "POST",
+            url: "controllers/StudentsList.php",
+            dataType: "json",
+            data: data,
+            success: function(result) {
+			
+			var html = "";
+			var i=1;
+            for (value of result) {
+                    html += '<tr>';
+					html += '<th scope="row">';
+					html += i++;
+					html += '</th>';
+                    html += `<td id="Mahs">${value.MaHs}</td>`;
+                    html += `<td>${value.TenHs}</td>`;
+                    html += `<td>${value.Diem}</td>`;
+                    html += `<td> <button class="btn btn-primary" onclick="XemHs(this.id)" id="${value.MaHs}">Xem thêm</button>`;
+					// html += `<button class="btn btn-primary" onclick="XoaHs(this.id)" id="${value.MaHs}"> Xóa</button> </td>`;
+                    html += '</tr>'
+                }
+                $('#StudentsList').html(html);
+		}
+		});
         }
 
         function themhs() {
@@ -22,13 +71,15 @@
             const Date = document.getElementById("Date").value;
             const Address = document.getElementById("Address").value;
             const Email = document.getElementById("Email").value;
-			const Class = checkbox("lop");
+			const Class= document.getElementById("themlop").value;
+
 			const error = {
                 MSHS: "Chưa nhập MSHS",
                 Name: "Chưa nhập tên",
                 Date: "Chưa nhập ngày tháng năm sinh",
                 Address: "Chưa nhập địa chỉ",
-                Email: "Chưa nhập Email"
+                Email: "Chưa nhập Email",
+                Class: "Chưa chọn lớp"
             };
 			if(MSHS== '') {
 				alert(error.MSHS);
@@ -50,6 +101,10 @@
                 alert(error.Email);
                 return;
 			}
+            if(Class == '') {
+                alert(error.Class);
+                return;
+			}
             const data = {
                 MSHS: MSHS,
                 Name: Name,
@@ -57,8 +112,9 @@
                 Date: Date,
                 Address: Address,
                 Email: Email,
-				Class: Class
+				Class: Class,
             };
+            //alert(data.Class);
             $.ajax({
                 url: "controllers/AddStudents.php",
                 type: "post",
@@ -67,37 +123,46 @@
                 data: data,
 				success: function(report)
 				{	
-					alert(report);
+					// if(report[0].message==TRUE)
+                    // {
+                    //     alert("Thêm học sinh thành công");
+                    // }
+                    // else
+                    // {
+                    //     alert(report[0].error);
+                    // }
+                    console.log(report);
 				}
             });			
         }
 		window.onload = function() {
-		$.ajax({
-        type: "POST",
-        url: "controllers/StudentsList.php",
-        dataType: "json",
-        success: function(result) {
+		// $.ajax({
+        // type: "POST",
+        // url: "controllers/StudentsList.php",
+        // dataType: "json",
+        // success: function(result) {
 			
-			var html = "";
-			var i=1;
-            for (value of result) {
-                    html += '<tr>';
-					html += '<th scope="row">';
-					html += i++;
-					html += '</th>';
-                    html += `<td id="Mahs">${value.MaHs}</td>`;
-                    html += `<td>${value.TenHs}</td>`;
-                    html += `<td> <button class="btn btn-primary" onclick="XemHs(this.id)" id="${value.MaHs}">Xem thêm</button>`;
-					html += `<button class="btn btn-primary" onclick="XoaHs(this.id)" id="${value.MaHs}"> Xóa</button> </td>`;
-                    html += '</tr>'
-                }
-                $('#StudentsList').html(html);
-		}
-		});
+		// 	var html = "";
+		// 	var i=1;
+        //     for (value of result) {
+        //             html += '<tr>';
+		// 			html += '<th scope="row">';
+		// 			html += i++;
+		// 			html += '</th>';
+        //             html += `<td id="Mahs">${value.MaHs}</td>`;
+        //             html += `<td>${value.TenHs}</td>`;
+        //             html += `<td> <button class="btn btn-primary" onclick="XemHs(this.id)" id="${value.MaHs}">Xem thêm</button>`;
+		// 			html += `<button class="btn btn-primary" onclick="XoaHs(this.id)" id="${value.MaHs}"> Xóa</button> </td>`;
+        //             html += '</tr>'
+        //         }
+        //         $('#StudentsList').html(html);
+		// }
+		// });
 		$.ajax({
         type: "POST",
         url: "controllers/Classlist.php",
         dataType: "json",
+<<<<<<< HEAD
         success: function(result) {		
 			var html = "";
             for (value of result) {
@@ -110,6 +175,34 @@
                 console.log(html)
                 $('#Lop').html(html);
 		}
+=======
+        success: function(result) {
+            helpers.buildDropdown(
+                    result,
+                    $('#xemlop'),
+                    'Select an option',
+                    'xemlop'
+                );
+            helpers.buildDropdown(
+                    result,
+                    $('#themlop'),
+                    'Select an option',
+                    'themlop'
+                );
+            var html = "";
+            var i=1;
+            for (value of result) {
+                html += '<tr>';
+                html += '<th scope="row">';
+                html += i++;
+                html += '</th>';
+                html += `<td>${value.id}</td>`;
+                html += `<td>${value.name}</td>`;
+                html += '</tr>'
+            }
+            $('#ClassList').html(html);
+            }
+>>>>>>> b92396f32b5f24be7fdd2eef14476b07fc0fc2ff
 		});
 		}
 		function XoaHs(id)
@@ -123,26 +216,12 @@
             data: { id: id },
         	});
 		}
-		function XemHs(id)
+		function xem()
 		{
-			myWindow = window.open("controllers/In4Student.php");
+			//var host= document.querySelector('#xemlop');
+            const Class= document.getElementById("xemlop").value;
+            alert(Class);
 		}
-	// 	$.ajax({
-    //     type: "POST",
-    //     url: "controllers/lop.php",
-    //     dataType: "json",
-    //     success: function(response) {
-    //         html = "";
-    //         for (value of response) {
-    //             if (value == 0) {
-    //                 html += `<option selected value="${value.MaLop}">${value.TenLop}</option>`;
-    //             } else {
-    //                 html += `<option  value="${value.MaLop}">${value.TenLop}</option>`;
-    //             }
-    //         }
-    //         $('#Lop').html(html);
-    //     }
-    // });
     </script>
 		<div class="" style="padding-bottom: 30px;">
 			<h1 style="text-align: center">THÔNG TIN HỌC SINH</h1>
@@ -194,10 +273,10 @@
                                 </td>
                             </tr>
 							<tr>
-                                <td>Lớp: </td>
+                                <td>Lớp:</td>
                                 <td>
-                                    <!-- <input type="text" name="lop" id="lop" style="margin-left:60px"> -->
-									<select style="margin-left:60px;" id="Lop"></select>
+									<select style="margin-left:60px;" id="themlop" name="themlop">
+                                    </select>
                                 </td>
                             </tr>
                         </table>
@@ -221,21 +300,6 @@
 									</tr>
 								</thead>
 								<tbody id="ClassList">
-									<!-- <tr>
-										<th scope="row">1</th>
-										<td>K10</td>
-										<td>10A1</td>
-									</tr>
-									<tr>
-										<th scope="row">2</th>
-										<td>K11</td>
-										<td>10A2</td>
-									</tr>
-									<tr>
-										<th scope="row">3</th>
-										<td>K12</td>
-										<td>10A3</td>
-									</tr> -->
 								</tbody>
 							</table>
 						</div>
@@ -249,24 +313,16 @@
 						</div>
 						<div class="card-body">
 							<div class="table-wrapper-scroll-y my-custom-scrollbar">
-								<select name="" id="" style="margin-bottom: 21px;">
-									<option value="">10A1</option>
-									<option value="">10A2</option>
-									<option value="">10A3</option>
-									<option value="">11A1</option>
-									<option value="">11A2</option>
-									<option value="">11A3</option>
-									<option value="">12A1</option>
-									<option value="">12A2</option>
-									<option value="">12A3</option>
+								<select name="xemlop" id="xemlop" style="margin-bottom: 21px;" onchange="xemdslop()">
 								</select>
-								<table class="table table-bordered table-striped mb-0">
+                                <!-- <button onclick="xemdslop()" class="btn btn-primary " style="margin: 0px auto;"> Xem </button> -->
+								<table class ="table table-bordered table-striped mb-0" >
 									<thead>
 										<tr>
 											<th scope="col">STT</th>
 											<th scope="col">Mã Học Sinh</th>
 											<th scope="col">Tên Học Sinh</th>
-											<!-- <th scope="col">Điểm Trung Bình</th> -->
+											<th scope="col">Điểm Trung Bình</th>
 											<th scope="col">Thao Tác</th>
 										</tr>
 									</thead>
@@ -279,10 +335,5 @@
 				</div>
 			</div>
 		</div>
-	</>
-	</div>
-	<div id="error">
-		
-	</div>
 <script type="text/javascript" src="js/sendDatahs.js"></script>
 <?php include 'View/element/footer.php'; ?>

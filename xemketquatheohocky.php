@@ -13,11 +13,30 @@
                                 <label class="input-group-text" for="HocKy">Năm học</label>
                             </div>
                             <select class="custom-select" id="namhoc" name="namhoc">
+<<<<<<< HEAD
                                 <option selected value="N1920">2019-2020</option>
                                 <option value="N2021">2020-2021</option>
                                 <option value="N2122">2021-2022</option>
                                 <option value="N2223">2022-2023</option>
+=======
+                                <?php
+                                $conn = mysqli_connect("localhost","root","","newcnpm");
+                                if($conn){
+                                    echo "Ok";
+                                }else{
+                                    die ("Fail");
+                                }
+                                $Mysql = "SELECT * FROM namhoc";
+>>>>>>> b92396f32b5f24be7fdd2eef14476b07fc0fc2ff
 
+                                $result1 = $conn->query($Mysql);
+                                if ($result1->num_rows>0){
+                                    while($row = $result1->fetch_assoc()){
+                                        echo "<option value='$row[MaNam]'>$row[NamHoc]</option>";
+                                    }
+                                }
+                                $conn->close();
+                                ?>   
                             </select>
                         </div>
                     </div>
@@ -27,6 +46,7 @@
                                 <label class="input-group-text" for="HocKy">Học kỳ</label>
                             </div>
                             <select class="custom-select" id="hocky" name="hocky">
+<<<<<<< HEAD
                                 <option selected value="HK1N1920">Học kỳ 1 năm 2019-2020</option>
                                 <option value="HK2N1920">Học kỳ 2 năm 2019-2020</option>
                                 <option value="HK1N2021">Học kỳ 1 năm 2020-2021</option>
@@ -36,6 +56,10 @@
                                 <option value="HK1N2223">Học kỳ 1 năm 2022-2023</option>
                                 <option value="HK2N2223">Học kỳ 2 năm 2022-2023</option>
 
+=======
+                                <option value="HK1">Học kỳ 1</option>
+                                <option value="HK2">Học kỳ 2</option>
+>>>>>>> b92396f32b5f24be7fdd2eef14476b07fc0fc2ff
                             </select>
                         </div>
                     </div>
@@ -68,8 +92,9 @@
                             mysqli_set_charset($connect,"utf8");
                             $hocky = $_POST["hocky"];
                             $namhoc = $_POST["namhoc"];
+                            $sqlhocky = $hocky.$namhoc;
 
-                            $sql = "SELECT * FROM lop INNER JOIN baocaotongkethocky ON lop.MaLop=baocaotongkethocky.MaLop WHERE baocaotongkethocky.MaHocKy='$hocky';";
+                            $sql = "SELECT * FROM lop INNER JOIN baocaotongkethocky ON lop.MaLop=baocaotongkethocky.MaLop WHERE baocaotongkethocky.MaHocKy='$sqlhocky';";
 
                             $result = $connect->query($sql);
                             if ($result->num_rows > 0) {
@@ -96,18 +121,18 @@
     </div>
 </div>
 <script>
-    document.querySelector("#hocky").addEventListener("change",function(){
-        let value = this.value.slice(3);
-        let year = document.querySelector("#namhoc").value;
-        if (value!==year) alert ("Bạn đã chọn học kì của năm khác năm ban đầu");
-        return ;
-    });
-    document.querySelector("#submit").addEventListener("click",function(){
-        console.log(1);
-        let value = document.querySelector("#hocky").value.slice(3);
-        let year = document.querySelector("#namhoc").value;
-        if (value!==year) alert ("Bạn đã chọn học kì của năm khác năm ban đầu");
-        return;
-    })
+    // document.querySelector("#hocky").addEventListener("change",function(){
+    //     let value = this.value.slice(3);
+    //     let year = document.querySelector("#namhoc").value;
+    //     if (value!==year) alert ("Bạn đã chọn học kì của năm khác năm ban đầu");
+    //     return ;
+    // });
+    // document.querySelector("#submit").addEventListener("click",function(){
+    //     console.log(1);
+    //     let value = document.querySelector("#hocky").value.slice(3);
+    //     let year = document.querySelector("#namhoc").value;
+    //     if (value!==year) alert ("Bạn đã chọn học kì của năm khác năm ban đầu");
+    //     return;
+    // })
 </script>
 <?php include 'View/element/footer.php'; ?>
