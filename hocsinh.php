@@ -165,61 +165,45 @@
             });			
         }
 		window.onload = function() {
-		$.ajax({
-        type: "POST",
-        url: "controllers/Classlist.php",
-        dataType: "json",
-<<<<<<< HEAD
-        success: function(result) {		
-			var html = "";
-            for (value of result) {
-                    if (value == 0) {
-                        html += `<option selected value="${value.MaLop}">${value.TenLop}</option>`;
-                    } else {
-                        html += `<option  value="${value.MaLop}">${value.TenLop}</option>`;
-                    }
+            $.ajax({
+            type: "POST",
+            url: "controllers/Classlist.php",
+            dataType: "json",
+            success: function(result) {
+                helpers.buildDropdown(
+                        result,
+                        $('#xemlop'),
+                        'Select an option',
+                        'xemlop'
+                    );                
+                var html = "";
+                var i=1;
+                for (value of result) {
+                    html += '<tr>';
+                    html += '<th scope="row">';
+                    html += i++;
+                    html += '</th>';
+                    html += `<td>${value.id}</td>`;
+                    html += `<td>${value.name}</td>`;
+                    html += `<td>${value.value}</td>`;
+                    html += '</tr>'
                 }
-                console.log(html)
-                $('#Lop').html(html);
+                $('#ClassList').html(html);
+                }
+            });
+            $.ajax({
+            type: "POST",
+            url: "controllers/aClasslist.php",
+            dataType: "json",
+            success: function(result) {helpers.buildDropdown(
+                        result,
+                        $('#themlop'),
+                        'Select an option',
+                        'themlop');
+                    }
+            });
 		}
-=======
-        success: function(result) {
-            helpers.buildDropdown(
-                    result,
-                    $('#xemlop'),
-                    'Select an option',
-                    'xemlop'
-                );
-            helpers.buildDropdown(
-                    result,
-                    $('#themlop'),
-                    'Select an option',
-                    'themlop'
-                );
-            var html = "";
-            var i=1;
-            for (value of result) {
-                html += '<tr>';
-                html += '<th scope="row">';
-                html += i++;
-                html += '</th>';
-                html += `<td>${value.id}</td>`;
-                html += `<td>${value.name}</td>`;
-                html += `<td>${value.value}</td>`;
-                html += '</tr>'
-            }
-            $('#ClassList').html(html);
-            }
->>>>>>> b92396f32b5f24be7fdd2eef14476b07fc0fc2ff
-		});
-		}
-		function XemHs(id)
-		{
-			// $(`#${id}`).closest('tr').addClass('removeRow');
-        	// $('.removeRow').fadeOut(1000);
-            
-            // const MS = document.getElementById(id).value;
-            // alert(MS);
+		function XemHs(id){
         	$.ajax({
             url: 'controllers/In4Student.php',
             type: 'POST',

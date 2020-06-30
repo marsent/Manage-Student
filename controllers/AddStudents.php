@@ -2,15 +2,6 @@
 <?php
 require 'config/databaseController.php';
 // $mhs=$_POST['MSHS'];
-=======
-<<<<<<< HEAD
-<?php
-require './config/databaseController.php';
-=======
-<?php require 'config/databaseController.php';
->>>>>>> b92396f32b5f24be7fdd2eef14476b07fc0fc2ff
-$mhs=$_POST['MSHS'];
->>>>>>> 68a5c1eca2c4103c723d4e75055f5778a078b424
 $name=$_POST['Name'];
 $gender=$_POST['Gender'];
 $date=$_POST['Date'];
