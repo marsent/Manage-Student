@@ -162,20 +162,6 @@
         type: "POST",
         url: "controllers/Classlist.php",
         dataType: "json",
-<<<<<<< HEAD
-        success: function(result) {		
-			var html = "";
-            for (value of result) {
-                    if (value == 0) {
-                        html += `<option selected value="${value.MaLop}">${value.TenLop}</option>`;
-                    } else {
-                        html += `<option  value="${value.MaLop}">${value.TenLop}</option>`;
-                    }
-                }
-                console.log(html)
-                $('#Lop').html(html);
-		}
-=======
         success: function(result) {
             helpers.buildDropdown(
                     result,
@@ -202,7 +188,6 @@
             }
             $('#ClassList').html(html);
             }
->>>>>>> b92396f32b5f24be7fdd2eef14476b07fc0fc2ff
 		});
 		}
 		function XoaHs(id)

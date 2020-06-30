@@ -2,15 +2,9 @@
 
 $class=$_POST['Class'];
 
-<<<<<<< HEAD
-$db = new DataAccessHelper();
-$conn = $db->connect();
-$sql = "
-=======
 $conn = new DataAccessHelper();
 $conn = $conn->connect();
 $sql ='
->>>>>>> b92396f32b5f24be7fdd2eef14476b07fc0fc2ff
 select *
 from hocsinh join quatrinhhoc on hocsinh.MaHocSinh=quatrinhhoc.MaHocSinh
 WHERE MaLop like "'.$class.'"';
