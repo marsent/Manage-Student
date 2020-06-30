@@ -13,12 +13,6 @@
                                 <label class="input-group-text" for="HocKy">Năm học</label>
                             </div>
                             <select class="custom-select" id="namhoc" name="namhoc">
-<<<<<<< HEAD
-                                <option selected value="N1920">2019-2020</option>
-                                <option value="N2021">2020-2021</option>
-                                <option value="N2122">2021-2022</option>
-                                <option value="N2223">2022-2023</option>
-=======
                                 <?php
                                 $conn = mysqli_connect("localhost","root","","newcnpm");
                                 if($conn){
@@ -27,14 +21,13 @@
                                     die ("Fail");
                                 }
                                 $Mysql = "SELECT * FROM namhoc";
->>>>>>> b92396f32b5f24be7fdd2eef14476b07fc0fc2ff
 
                                 $result1 = $conn->query($Mysql);
                                 if ($result1->num_rows>0){
                                     while($row = $result1->fetch_assoc()){
                                         echo "<option value='$row[MaNam]'>$row[NamHoc]</option>";
-                                    }
-                                }
+                                    };
+                                };
                                 $conn->close();
                                 ?>   
                             </select>
@@ -46,20 +39,8 @@
                                 <label class="input-group-text" for="HocKy">Học kỳ</label>
                             </div>
                             <select class="custom-select" id="hocky" name="hocky">
-<<<<<<< HEAD
-                                <option selected value="HK1N1920">Học kỳ 1 năm 2019-2020</option>
-                                <option value="HK2N1920">Học kỳ 2 năm 2019-2020</option>
-                                <option value="HK1N2021">Học kỳ 1 năm 2020-2021</option>
-                                <option value="HK2N2021">Học kỳ 2 năm 2020-2021</option>
-                                <option value="HK1N2122">Học kỳ 1 năm 2021-2022</option>
-                                <option value="HK2N2122">Học kỳ 2 năm 2021-2022</option>
-                                <option value="HK1N2223">Học kỳ 1 năm 2022-2023</option>
-                                <option value="HK2N2223">Học kỳ 2 năm 2022-2023</option>
-
-=======
                                 <option value="HK1">Học kỳ 1</option>
                                 <option value="HK2">Học kỳ 2</option>
->>>>>>> b92396f32b5f24be7fdd2eef14476b07fc0fc2ff
                             </select>
                         </div>
                     </div>
@@ -83,7 +64,7 @@
                     <tbody>
                         <?php
                         if (isset($_POST["hocky"])&& isset($_POST["namhoc"])) {
-                            $connect = mysqli_connect("localhost", "root", "Tuananh19022k", "qlhs");
+                            $connect = mysqli_connect("localhost", "root", "", "newcnpm");
                             if (!$connect) {
                                 die("Fail to connect DB");
                             } else {
@@ -98,16 +79,17 @@
 
                             $result = $connect->query($sql);
                             if ($result->num_rows > 0) {
+                                $count = 1;
                                 while ($row = $result->fetch_assoc()) {
-                                    
                                     echo "<tr>";
-                                    echo "<th scope='row'>1</th>";
+                                    echo "<th scope='row'>$count</th>";
                                     echo "<td>$row[TenLop]</td>";
                                     echo "<td>$row[SiSo]</td>";
                                     echo "<td>$row[SoLuongDat]</td>";
                                     echo "<td>$row[TiLe]</td>";
                                     echo "</tr>";
                                 }
+                                $count++;
                             }
                             $connect->close();
                         }
