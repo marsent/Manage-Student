@@ -14,7 +14,7 @@
                             </div>
                             <select class="custom-select" id="namhoc" name="namhoc">
                             <?php
-                                $conn = mysqli_connect("localhost","root","","newcnpm");
+                                $conn = mysqli_connect("localhost","root","Tuananh19022k","qlhs");
                                 if($conn){
                                     echo "Ok";
                                 }else{
@@ -54,7 +54,7 @@
                             <select class="custom-select" id="monhoc" name="monhoc">
 
                             <?php 
-                            $conn = mysqli_connect("localhost","root","","newcnpm");
+                            $conn = mysqli_connect("localhost","root","Tuananh19022k","qlhs");
                             $sql = "SELECT * FROM monhoc";
                             mysqli_set_charset($conn,"utf8");
 
@@ -142,5 +142,7 @@
     //     if (value!==year) alert ("Bạn đã chọn học kì của năm khác năm ban đầu");
     //     return;
     // })
+    
 </script>
+<script src="js/thongkemon.js"></script>
 <?php include 'View/element/footer.php'; ?>
