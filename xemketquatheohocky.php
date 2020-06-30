@@ -13,7 +13,7 @@
                                 <label class="input-group-text" for="HocKy">Năm học</label>
                             </div>
                             <select class="custom-select" id="namhoc" name="namhoc">
-                                <option value="N1920">2019-2020</option>
+                                <option selected value="N1920">2019-2020</option>
                                 <option value="N2021">2020-2021</option>
                                 <option value="N2122">2021-2022</option>
                                 <option value="N2223">2022-2023</option>
@@ -27,7 +27,7 @@
                                 <label class="input-group-text" for="HocKy">Học kỳ</label>
                             </div>
                             <select class="custom-select" id="hocky" name="hocky">
-                                <option value="HK1N1920">Học kỳ 1 năm 2019-2020</option>
+                                <option selected value="HK1N1920">Học kỳ 1 năm 2019-2020</option>
                                 <option value="HK2N1920">Học kỳ 2 năm 2019-2020</option>
                                 <option value="HK1N2021">Học kỳ 1 năm 2020-2021</option>
                                 <option value="HK2N2021">Học kỳ 2 năm 2020-2021</option>
@@ -59,7 +59,7 @@
                     <tbody>
                         <?php
                         if (isset($_POST["hocky"])&& isset($_POST["namhoc"])) {
-                            $connect = mysqli_connect("localhost", "root", "", "newcnpm");
+                            $connect = mysqli_connect("localhost", "root", "Tuananh19022k", "qlhs");
                             if (!$connect) {
                                 die("Fail to connect DB");
                             } else {

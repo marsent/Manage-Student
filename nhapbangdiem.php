@@ -54,7 +54,7 @@
                         <div class="input-group-prepend">
                             <label class="input-group-text" for="15col">Số cột 15 phút</label>
                         </div>
-                     <select class="custom-select" id="15Pcol" name="15Pcol">
+                    <select class="custom-select" id="15Pcol" name="15Pcol">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option selected value="3">3</option>

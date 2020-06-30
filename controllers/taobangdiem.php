@@ -1,7 +1,7 @@
 <?php require './config/databaseController.php';
 
-$conn = new DataAccessHelper();
-$conn = $conn->connect();
+$db = new DataAccessHelper();
+$conn = $db->connect();
 $error = [];
 
 $namhoc = $_POST['namhoc'];

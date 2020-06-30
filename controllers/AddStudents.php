@@ -1,5 +1,5 @@
 <?php
-require './database/databaseController.php';
+require './config/databaseController.php';
 $mhs=$_POST['MSHS'];
 $name=$_POST['Name'];
 $gender=$_POST['Gender'];

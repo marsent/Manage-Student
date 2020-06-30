@@ -1,6 +1,6 @@
 <?php require 'config/databaseController.php';
-$conn = new DataAccessHelper();
-$conn = $conn->connect();
+$db = new DataAccessHelper();
+$conn = $db->connect();
 $namhoc = $_POST['namhoc'];
 $hocky = $_POST['hocky'];
 $lop = $_POST['lop'];

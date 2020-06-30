@@ -1,8 +1,8 @@
 <?php
 require './database/databaseController.php';
 
-$conn = new DataAccessHelper();
-$conn = $conn->connect();
+$db = new DataAccessHelper();
+$conn = $db->connect();
 $sql = "
 select *
 from hocsinh 

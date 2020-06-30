@@ -99,19 +99,16 @@
         url: "controllers/Classlist.php",
         dataType: "json",
         success: function(result) {		
-			console.log(result);
 			var html = "";
-			var i=1;
             for (value of result) {
-                    html += '<tr>';
-					html += '<th scope="row">';
-					html += i++;
-					html += '</th>';
-                    html += `<td>${value.MaLop}</td>`;
-                    html += `<td>${value.TenLop}</td>`;
-                    html += '</tr>'
+                    if (value == 0) {
+                        html += `<option selected value="${value.MaLop}">${value.TenLop}</option>`;
+                    } else {
+                        html += `<option  value="${value.MaLop}">${value.TenLop}</option>`;
+                    }
                 }
-                $('#ClassList').html(html);
+                console.log(html)
+                $('#Lop').html(html);
 		}
 		});
 		}

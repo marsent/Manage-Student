@@ -64,7 +64,7 @@
 						<a class="dropdown-item" href="xemketquatheohocky">Xem thống kê học kỳ</a>
 					</div>
 				</div>
-				<a class="nav-item nav-link " href="#">Quy định</a>
+				<a class="nav-item nav-link " href="thaydoiquydinh.php">Quy định</a>
 			</div>
 		</div>
 	</nav>

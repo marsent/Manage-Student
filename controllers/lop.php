@@ -1,10 +1,10 @@
 <?php require 'config/databaseController.php';
 
-$conn = new DataAccessHelper();
-$conn = $conn->connect();
+$db = new DataAccessHelper();
+$conn = $db->connect();
 $namhoc=$_POST['namhoc'];
 $hocky=$_POST['hocky'];
-$sql = "select DISTINCT lop.*
+$sql = "SELECT DISTINCT lop.*
 from quatrinhhoc join lop
 on quatrinhhoc.malop=lop.malop
 join hocky on hocky.mahocky=quatrinhhoc.mahocky

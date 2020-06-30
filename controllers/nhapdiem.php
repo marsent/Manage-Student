@@ -1,6 +1,6 @@
 <?php require 'config/databaseController.php';
-$conn = new DataAccessHelper();
-$conn = $conn->connect();
+$db = new DataAccessHelper();
+$conn = $db->connect();
 
 //  $diem=$_POST['diem'];
 //  $mabangdiem=$_POST['mabangdiem'];

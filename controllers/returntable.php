@@ -1,7 +1,33 @@
-<?php require 'config/databaseController.php';
-
+<?php
 $db = new DataAccessHelper();
 $conn = $db->connect();
+$sql = "SELECT * from lop ";
+$result = $conn->query($sql);
+$lop = array();
+while ($rows = $result->fetch_assoc()) {
+    $lop[] = array(
+        "MaLop" => $rows['MaLop'],
+        "TenLop" => $rows['TenLop'],
+    );
+}
+
+$sql = "SELECT * from namhoc";
+$result = $conn->query($sql);
+$namhoc = array();
+while ($rows = $result->fetch_assoc()) {
+    $namhoc[] = array(
+        "MaNam" => $rows['MaNam'],
+        "NamHoc" => $rows['NamHoc']
+    );
+}
+
+function printNamhoc($namhoc)
+{
+    foreach ($namhoc as $value) {
+        echo " <option value=" . $value['MaNam'] . ">" . $value['NamHoc'] . "</option>";
+    }
+}
+
 $sql = "SELECT * from monhoc";
 $result = $conn->query($sql);
 $monhoc = array();
@@ -22,5 +48,3 @@ function printTableMonHoc($monhoc)
         echo $html;
     }
 }
-$conn->close();
-echo json_encode($monhoc);

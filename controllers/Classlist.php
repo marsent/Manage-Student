@@ -1,20 +1,20 @@
 <?php
-require './database/databaseController.php';
+require './config/databaseController.php';
 
-$conn = new DataAccessHelper();
-$conn = $conn->connect();
+$db = new DataAccessHelper();
+$conn = $db->connect();
 $sql = "
 select *
 from lop 
 ";
 $result = $conn->query($sql);
-$list = array();
+$class = array();
 while ($rows = $result->fetch_assoc()) {
-    $list[] = array(
+    $class[] = array(
         "MaLop" => $rows['MaLop'] ,
         "TenLop" => $rows['TenLop'], 
     );
 }
 $conn->close();
-echo json_encode($list);
+echo json_encode($class);
 ?>
