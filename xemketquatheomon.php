@@ -1,7 +1,7 @@
 <?php include 'View/element/header.php'; ?>
 <div class="container-fluid">
     <span>
-        <h1 style=" text-shadow: black; text-align: center;"> Tra cứu kết quả theo môn học</h1>
+        <h1 style=" text-shadow: black; text-align: center;"> Báo Cáo Tổng Kết Môn Học</h1>
     </span>
     <div class="card shadow mb-4">
         <div class="card-body">
