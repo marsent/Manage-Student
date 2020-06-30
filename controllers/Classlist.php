@@ -1,14 +1,19 @@
 <<<<<<< HEAD
 <?php
+require 'config/databaseController.php';
+=======
+<<<<<<< HEAD
+<?php
 require './config/databaseController.php';
 =======
 <?php require 'config/databaseController.php';
 >>>>>>> b92396f32b5f24be7fdd2eef14476b07fc0fc2ff
+>>>>>>> 68a5c1eca2c4103c723d4e75055f5778a078b424
 
 $db = new DataAccessHelper();
 $conn = $db->connect();
 $sql = "
-select MaLop,TenLop
+select MaLop,TenLop,SiSo
 from lop join khoilop on lop.MaKhoiLop=khoilop.MaKhoiLop
 where(
     khoilop.MaNam=(
@@ -28,8 +33,13 @@ while ($rows = $result->fetch_assoc()) {
 =======
     $list[] = array(
         "id" => $rows['MaLop'] ,
+<<<<<<< HEAD
+        "name" => $rows['TenLop'],
+        "value" => $rows['SiSo']
+=======
         "name" => $rows['TenLop'], 
 >>>>>>> b92396f32b5f24be7fdd2eef14476b07fc0fc2ff
+>>>>>>> 68a5c1eca2c4103c723d4e75055f5778a078b424
     );
 }
 $conn->close();
