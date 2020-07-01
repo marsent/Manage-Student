@@ -150,12 +150,12 @@ require "controllers/qllh-submit.php";
 								<tr>
 									
 									<th scope=" col">STT</th>
-									<th scope="col">Mã lớp</th>
-									<th scope="col">Tên lớp học</th>
-									<th scope="col">Sĩ số</th>
-									<th scope="col">Thao tác</th>
+							<th scope="col">Mã lớp</th>
+							<th scope="col">Tên lớp học</th>
+							<th scope="col">Sĩ số</th>
+							<th scope="col">Thao tác</th>
 
-								</tr>
+							</tr>
 							</thead>
 							<tbody>
 								<?php
@@ -197,23 +197,10 @@ require "controllers/qllh-submit.php";
 													</div>
 													<div class="modal-footer">
 														<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-														<button type="submit" name="save" class="btn btn-primary">Save changes</button>
+														<button type="submit" id="save" name="save" class="btn btn-primary">Save changes</button>
 													</div>
-												</form>
+													</form>
 											</div>
-											<?php
-											if (isset($_POST["save"])) {
-												$malop = $_POST["MaLop"];
-												$tenlop = $_POST["TenLop"];
-												$sql_update = "UPDATE lop SET TenLop='$tenlop' WHERE MaLop='$malop'";
-												$result = mysqli_query($conn, $sql_update);
-												if ($result) {
-													echo "<script> alert('Sửa thành công')</script>";
-												} else {
-													echo "<script>alert('Sửa không thành công')</script>";
-												}
-											}
-											?>
 										</div>
 									</div>
 								</div>
@@ -247,13 +234,30 @@ require "controllers/qllh-submit.php";
 				alert("Khong the thay doi gia tri nay");
 				$(this).val(value);
 
-			})
+			});
+			$("#save").click(function() {
+			console.log(1);
+			var malop = document.querySelector("#classCode").value;
+			var tenlop = document.querySelector("#className").value;
+			console.log(malop,tenlop);
+			$.ajax({
+				type: "POST",
+				url: "controllers/updateclass.php",
+				data: {
+					malop: malop,
+					tenlop: tenlop	
+				},
+				dataType: "json" 
+				
+			});
 		})
+		})
+
 	})
 </script>
 
 <!-- JS boostrap 4 -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
