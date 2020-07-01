@@ -149,13 +149,13 @@ require "controllers/qllh-submit.php";
 							<thead>
 								<tr>
 									
-											<th scope=" col">STT</th>
-							<th scope="col">Mã lớp</th>
-							<th scope="col">Tên lớp học</th>
-							<th scope="col">Sĩ số</th>
-							<th scope="col">Thao tác</th>
+									<th scope=" col">STT</th>
+									<th scope="col">Mã lớp</th>
+									<th scope="col">Tên lớp học</th>
+									<th scope="col">Sĩ số</th>
+									<th scope="col">Thao tác</th>
 
-							</tr>
+								</tr>
 							</thead>
 							<tbody>
 								<?php

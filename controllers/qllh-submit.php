@@ -9,11 +9,17 @@
         $manam= substr($makhoi,3);
         $tenlop=$_POST["TenLop"];
         $malop=$tenlop.$manam;
-        $siso=0;    
-         
-        $sql_insert="INSERT INTO lop(MaLop, TenLop, MaKhoiLop, SiSo) VALUES ('$malop', '$tenlop', '$makhoi', $siso)";
-        mysqli_query($conn, $sql_insert);
-        echo "<script>alert('Thêm lớp học thành công')</script>";
-             
+        $makhoi_sosanh=substr($makhoi, 1, 2);
+        $tenlop_sosanh=substr($tenlop, 0, 2);
+        $siso=0;
+         if($makhoi_sosanh!=$tenlop_sosanh)
+         {
+            echo "<script>alert('Lớp học phải thuộc đúng khối')</script>";
+         }
+         else{
+            $sql_insert="INSERT INTO lop(MaLop, TenLop, MaKhoiLop, SiSo) VALUES ('$malop', '$tenlop', '$makhoi', $siso)";
+            mysqli_query($conn, $sql_insert);
+            echo "<script>alert('Thêm lớp học thành công')</script>";
+         }
          
      }
