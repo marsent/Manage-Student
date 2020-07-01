@@ -1,4 +1,4 @@
-<?php
+<?php 
 $db = new DataAccessHelper();
 $conn = $db->connect();
 $sql = "SELECT * from lop ";

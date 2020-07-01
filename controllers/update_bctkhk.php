@@ -1,26 +1,26 @@
 <?php require './config/databaseController.php';
-        require './config/function.php';
-        $db = new DataAccessHelper();
-        $conn = $db->connect();
+require './config/function.php';
+$db = new DataAccessHelper();
+$conn = $db->connect();
 $error = [];
 
 $namhoc = $_POST['namhoc'];
 $hocky = $_POST['hocky'];
 $lop = $_POST['lop'];
 $monhoc = $_POST['monhoc'];
-$mahocky=getMaHK($conn,$hocky,$namhoc);
-$diemdat=getDiemDat($conn);
+$mahocky = getMaHK($conn, $hocky, $namhoc);
+$diemdat = getDiemDat($conn);
 $sql = "SELECT siso
     FROM quatrinhhoc 
     JOIN lop on lop.malop=quatrinhhoc.malop
      WHERE quatrinhhoc.MaLop='$lop' AND mahocky='$mahocky'";
 $sisolop = $conn->query($sql);
 $siso = $sisolop->fetch_row()[0];
- $sql = "SELECT count(*) as soluongdat 
+$sql = "SELECT count(*) as soluongdat 
  FROM quatrinhhoc 
   WHERE MaLop='$lop' AND mahocky='$mahocky' and diemtbhk>=$diemdat";
- $soluongdat = $conn->query($sql);
- $sld = $soluongdat->fetch_row()[0];
+$soluongdat = $conn->query($sql);
+$sld = $soluongdat->fetch_row()[0];
 $siso = (int) $siso;
 $tile = ($sld / $siso) * 100;
 $sql = "SELECT * FROM baocaotongkethocky 

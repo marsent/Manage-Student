@@ -166,6 +166,60 @@
             });			
         }
 		window.onload = function() {
+		// $.ajax({
+        // type: "POST",
+        // url: "controllers/StudentsList.php",
+        // dataType: "json",
+        // success: function(result) {
+			
+		// 	var html = "";
+		// 	var i=1;
+        //     for (value of result) {
+        //             html += '<tr>';
+		// 			html += '<th scope="row">';
+		// 			html += i++;
+		// 			html += '</th>';
+        //             html += `<td id="Mahs">${value.MaHs}</td>`;
+        //             html += `<td>${value.TenHs}</td>`;
+        //             html += `<td> <button class="btn btn-primary" onclick="XemHs(this.id)" id="${value.MaHs}">Xem thêm</button>`;
+		// 			html += `<button class="btn btn-primary" onclick="XoaHs(this.id)" id="${value.MaHs}"> Xóa</button> </td>`;
+        //             html += '</tr>'
+        //         }
+        //         $('#StudentsList').html(html);
+		// }
+		// });
+		$.ajax({
+        type: "POST",
+        url: "controllers/Classlist.php",
+        dataType: "json",
+        success: function(result) {
+            helpers.buildDropdown(
+                    result,
+                    $('#xemlop'),
+                    'Select an option',
+                    'xemlop'
+                );
+            helpers.buildDropdown(
+                    result,
+                    $('#themlop'),
+                    'Select an option',
+                    'themlop'
+                );
+            var html = "";
+            var i=1;
+            for (value of result) {
+                html += '<tr>';
+                html += '<th scope="row">';
+                html += i++;
+                html += '</th>';
+                html += `<td>${value.id}</td>`;
+                html += `<td>${value.name}</td>`;
+                html += '</tr>'
+            }
+            $('#ClassList').html(html);
+            }
+		});
+
             $.ajax({
             type: "POST",
             url: "controllers/Classlist.php",
@@ -203,6 +257,7 @@
                         'themlop');
                     }
             });
+
 		}
 		function XemHs(id){
         	$.ajax({

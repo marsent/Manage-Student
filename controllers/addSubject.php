@@ -1,5 +1,5 @@
-<?php require './config/databaseController.php';
-require './returntable.php';
+<?php require 'config/databaseController.php';
+require 'returntable.php';
 $db = new DataAccessHelper();
 $conn = $db->connect();
 
