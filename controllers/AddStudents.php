@@ -17,8 +17,8 @@ $row=mysqli_fetch_assoc($conn->query('select * from hocsinh where HoTen like "'.
 $report='';
 
 if(
-  $age > mysqli_fetch_assoc($conn->query('select * from thongso where MaThongSo like "MAxY"'))['GiaTri'] ||
-  $age < mysqli_fetch_assoc($conn->query('select * from thongso where MaThongSo like "MINY"'))['GiaTri'] ||
+  $age > mysqli_fetch_assoc($conn->query('select * from thongso where MaThongSo like "TTD"'))['GiaTri'] ||
+  $age < mysqli_fetch_assoc($conn->query('select * from thongso where MaThongSo like "TTT"'))['GiaTri'] ||
   ( $row['GioiTinh'] == $gender &&
     $row['NgaySinh'] == $date &&
     $row['DiaChi'] == $address &&

@@ -13,7 +13,7 @@ where(
         ORDER BY NamHoc DESC LIMIT 1
     )
     and lop.SiSo < (select GiaTri
-    from thongso Where MaThongSo like '')
+    from thongso Where MaThongSo like 'SSTD')
     ) 
 ";
 $result = $conn->query($sql);
