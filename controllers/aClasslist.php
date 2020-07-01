@@ -1,7 +1,6 @@
 <?php
 require 'config/databaseController.php';
 
-
 $conn = new DataAccessHelper();
 $conn = $conn->connect();
 $sql = "
@@ -13,6 +12,8 @@ where(
         from namhoc
         ORDER BY NamHoc DESC LIMIT 1
     )
+    and lop.SiSo < (select GiaTri
+    from thongso Where MaThongSo like '')
     ) 
 ";
 $result = $conn->query($sql);

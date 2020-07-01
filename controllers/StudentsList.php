@@ -1,5 +1,5 @@
-<?php require 'config/databaseController.php';
-
+<?php
+require 'config/databaseController.php';
 $class=$_POST['Class'];
 
 $conn = new DataAccessHelper();
@@ -7,7 +7,12 @@ $conn = $conn->connect();
 $sql ='
 select *
 from hocsinh join quatrinhhoc on hocsinh.MaHocSinh=quatrinhhoc.MaHocSinh
-WHERE MaLop like "'.$class.'"';
+WHERE MaLop like "'.$class.'"
+and MaHocky=(
+    select MaHocKy
+    WHERE MaLop like "'.$class.'"
+    ORDER BY MaHocKy DESC LIMIT 1
+)';
 
 $result = $conn->query($sql);
 $list = array();
