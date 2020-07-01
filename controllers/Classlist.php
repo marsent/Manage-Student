@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-<?php
-require './config/databaseController.php';
-=======
 <?php require 'config/databaseController.php';
->>>>>>> b92396f32b5f24be7fdd2eef14476b07fc0fc2ff
 
 $db = new DataAccessHelper();
 $conn = $db->connect();
@@ -21,15 +16,9 @@ where(
 $result = $conn->query($sql);
 $class = array();
 while ($rows = $result->fetch_assoc()) {
-<<<<<<< HEAD
-    $class[] = array(
-        "MaLop" => $rows['MaLop'] ,
-        "TenLop" => $rows['TenLop'], 
-=======
     $list[] = array(
         "id" => $rows['MaLop'] ,
         "name" => $rows['TenLop'], 
->>>>>>> b92396f32b5f24be7fdd2eef14476b07fc0fc2ff
     );
 }
 $conn->close();

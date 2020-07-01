@@ -100,7 +100,7 @@
 
             </table>
             <div class="col d-flex justify-content-center" id="submit-btn">
-                <button type="submit" id="capnhat" class="btn btn-primary" style=" float:right; " style="">Cập nhật bảng điểm</button>
+                <button type="submit" id="capnhat" class="btn btn-primary" style=" float:right; ">Cập nhật bảng điểm</button>
             </div>
         </div>
     </div>

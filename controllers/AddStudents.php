@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-<?php
-require './config/databaseController.php';
-=======
 <?php require 'config/databaseController.php';
->>>>>>> b92396f32b5f24be7fdd2eef14476b07fc0fc2ff
 $mhs=$_POST['MSHS'];
 $name=$_POST['Name'];
 $gender=$_POST['Gender'];
