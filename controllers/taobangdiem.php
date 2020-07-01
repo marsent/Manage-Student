@@ -1,5 +1,5 @@
 <?php require './config/databaseController.php';
-
+ require './config/function.php';
 $db = new DataAccessHelper();
 $conn = $db->connect();
 $error = [];
@@ -8,7 +8,7 @@ $namhoc = $_POST['namhoc'];
 $hocky = $_POST['hocky'];
 $lop = $_POST['lop'];
 $monhoc = $_POST['monhoc'];
-
+$mahocky=getMaHK($conn,$hocky,$namhoc);
 // $sql = "SELECT * from quatrinhhoc join hocky
 // on quatrinhhoc.mahocky=hocky.mahocky
 // join bangdiemmon on bangdiemmon.maqthoc=quatrinhhoc.maqthoc
@@ -23,11 +23,12 @@ $monhoc = $_POST['monhoc'];
 //     }
 // }
 
-$sql = "select * from quatrinhhoc join hocky
-on quatrinhhoc.mahocky=hocky.mahocky
+$sql = "select * from quatrinhhoc join hocsinh
+on quatrinhhoc.mahocsinh=hocsinh.mahocsinh
 join bangdiemmon on bangdiemmon.maqthoc=quatrinhhoc.maqthoc
-where  malop='$lop' and hocky='$hocky' and manam='$namhoc' and mamonhoc='$monhoc'";
+where  malop='$lop' and mahocky='$mahocky' and mamonhoc='$monhoc'";
 $result = $conn->query($sql);
+echo $conn->error;
 if ($result->num_rows == 0) {
     $sql = "SELECT * FROM quatrinhhoc join hocky
 on quatrinhhoc.mahocky=hocky.mahocky WHERE MaLop='$lop' AND MaNam='$namhoc' and hocky='$hocky'";
