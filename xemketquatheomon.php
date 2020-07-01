@@ -1,7 +1,7 @@
 <?php include 'View/element/header.php'; ?>
 <div class="container-fluid">
     <span>
-        <h1 style=" text-shadow: black; text-align: center;"> Tra cứu kết quả theo môn học</h1>
+        <h1 style=" text-shadow: black; text-align: center;"> Báo Cáo Tổng Kết Môn Học</h1>
     </span>
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -89,7 +89,7 @@
                     <tbody>
                     <?php
                     if (isset($_POST["hocky"]) && isset($_POST["monhoc"]) && isset($_POST["namhoc"])) {
-                        $connect = mysqli_connect("localhost", "root", "Tuananh19022k", "qlhs");
+                        $connect = mysqli_connect("localhost", "root", "", "newcnpm");
                         if (!$connect) {
                             die("Fail to connect DB");
                         } else {
@@ -105,16 +105,17 @@
                         on baocaothongkemon.MaBCTKM=ct_bctkm.MaBCTKM INNER JOIN monhoc on baocaothongkemon.MaMonHoc = monhoc.MaMonHoc where baocaothongkemon.MaHocKy='$sqlhocky' and baocaothongkemon.MaMonHoc= '$monhoc' ;";
                         $result = $connect->query($sql);
                         if ($result->num_rows > 0) {
+                            $count = 1;
                             while ($row = $result->fetch_assoc()) {
-                            $count = 0;
                             echo "<tr>";
-                                echo "<th scope='row'>1</th>";
+                                echo "<th scope='row'>$count</th>";
                                 echo "<td>$row[TenLop]</td>";
                                 echo "<td>$row[SiSo]</td>";
                                 echo "<td>$row[SoLuongDat]</td>";
                                 echo "<td>$row[TiLe]</td>";
                             echo "</tr>";
                             }
+                            $count ++ ;
                         }
                         $connect->close();
                     }else{

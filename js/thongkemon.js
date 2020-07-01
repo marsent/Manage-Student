@@ -4,7 +4,7 @@ $('submit').click(async function(){
     var namhoc = $('#namhoc').val();
     var hocky = $('#hocky').val();
     var monhoc = $('#monhoc').val();
-    
+    await update_CT_BCTKM(namhoc,hocky,monhoc)
 })
 
 function update_CT_BCTKM(namhoc, hocky , monhoc) {
@@ -15,7 +15,6 @@ function update_CT_BCTKM(namhoc, hocky , monhoc) {
         data: {
             namhoc: namhoc,
             hocky: hocky,
-            lop: lop,
             monhoc: monhoc
         }
     });

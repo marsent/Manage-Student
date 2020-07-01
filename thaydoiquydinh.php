@@ -18,7 +18,7 @@ require './controllers/returntable.php'
                             Thay đổi tuổi tối thiểu, tuổi tối đa
                         </a>
                     </div>
-                    <div id="collapseOne" class="collapse" data-parent="#accordion" style="">
+                    <div id="collapseOne" class="collapse" data-parent="#accordion" >
                         <div class="card-body">
                             <form>
                                 <div class="row d-flex justify-content-center ">
@@ -48,7 +48,7 @@ require './controllers/returntable.php'
                         Thay đổi sĩ số tối đa của các lớp, thay đổi số lượng và tên các lớp trong trường
                     </a>
                 </div>
-                <div id="collapseTwo" class="collapse" data-parent="#accordion" style="">
+                <div id="collapseTwo" class="collapse" data-parent="#accordion" >
                     <div class="card-body">
                         <form>
 
@@ -156,7 +156,7 @@ require './controllers/returntable.php'
                         Thay đổi số lượng và tên các môn học
                     </a>
                 </div>
-                <div id="collapseThree" class="collapse" data-parent="#accordion" style="">
+                <div id="collapseThree" class="collapse" data-parent="#accordion" >
                     <div class="card-body">
 
                         <form>
@@ -322,7 +322,7 @@ require './controllers/returntable.php'
                         Thay đổi điểm đạt môn/đạt
                     </a>
                 </div>
-                <div id="collapseFour" class="collapse" data-parent="#accordion" style="">
+                <div id="collapseFour" class="collapse" data-parent="#accordion" >
                     <div class="card-body">
                         <form>
                             <div class="form-row d-flex justify-content-center">

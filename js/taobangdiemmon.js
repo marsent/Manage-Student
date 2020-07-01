@@ -170,7 +170,7 @@
                 monhoc: monhoc
 
             }
-           await $.ajax({
+            await $.ajax({
                 type: "POST",
                 url: "controllers/nhapdiem.php",
                 data: hocsinh,

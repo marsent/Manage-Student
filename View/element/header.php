@@ -60,8 +60,8 @@
 					</a>
 					<div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
 						<a class="dropdown-item" href="nhapbangdiem.php">Tạo bảng điểm môn học</a>
-						<a class="dropdown-item" href="xemketquatheomon.php">Xem thống kê môn</a>
-						<a class="dropdown-item" href="xemketquatheohocky">Xem thống kê học kỳ</a>
+						<a class="dropdown-item" href="xemketquatheomon.php">Báo Cáo Tổng Kết Môn</a>
+						<a class="dropdown-item" href="xemketquatheohocky">Báo Cáo Tổng Kết Học Kỳ</a>
 					</div>
 				</div>
 				<a class="nav-item nav-link " href="thaydoiquydinh.php">Quy định</a>

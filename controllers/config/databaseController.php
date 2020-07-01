@@ -13,7 +13,7 @@ class DataAccessHelper
 
 		// Create connection
 		$GLOBALS['conn'] = new mysqli($servername, $username, $password, $dbname);
-
+		$GLOBALS['conn']->set_charset("utf8");
 		// Check connection
 		if ($GLOBALS['conn']->connect_error) {
 			die("Connection failed: " . $GLOBALS['conn']->connect_error);

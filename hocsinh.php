@@ -66,7 +66,7 @@
 
         function themhs() {
             const Name = document.getElementById("Name").value;
-            const MSHS = document.getElementById("MSHS").value;
+            // const MSHS = document.getElementById("MSHS").value;
             const Gender = checkbox("Gender");
             const Date = document.getElementById("Date").value;
             const Address = document.getElementById("Address").value;
@@ -74,17 +74,17 @@
 			const Class= document.getElementById("themlop").value;
 
 			const error = {
-                MSHS: "Chưa nhập MSHS",
+                // MSHS: "Chưa nhập MSHS",
                 Name: "Chưa nhập tên",
                 Date: "Chưa nhập ngày tháng năm sinh",
                 Address: "Chưa nhập địa chỉ",
                 Email: "Chưa nhập Email",
                 Class: "Chưa chọn lớp"
             };
-			if(MSHS== '') {
-				alert(error.MSHS);
-                return;
-			}
+			// if(MSHS== '') {
+			// 	alert(error.MSHS);
+            //     return;
+			// }
 			if(Name=='') {
 				alert(error.Name);
                 return;
@@ -106,7 +106,7 @@
                 return;
 			}
             const data = {
-                MSHS: MSHS,
+                // MSHS: MSHS,
                 Name: Name,
                 Gender: Gender,
                 Date: Date,
@@ -123,15 +123,44 @@
                 data: data,
 				success: function(report)
 				{	
-					// if(report[0].message==TRUE)
+                    // console.log(report);
+					// if(report == 'true')
                     // {
                     //     alert("Thêm học sinh thành công");
                     // }
                     // else
                     // {
-                    //     alert(report[0].error);
+                    //     alert("Không thể thêm xin vui lòng kiểm tra lại thông tin học sinh");
                     // }
-                    console.log(report);
+				}
+            });			
+        }
+        function suahs(id) {
+            //const Name = document.getElementById("Ten").value;
+            // const MSHS = document.getElementById("MSHS").value;
+            // const Gender = checkbox("GioiTinh");
+            // const Date = document.getElementById("NgaySinh").value;
+            const Address = document.getElementById("DiaChi").value;
+            const Email = document.getElementById("Email").value;
+
+            const data = {
+                MSHS: id,
+                // Name: Name,
+                // Gender: Gender,
+                // Date: Date,
+                Address: Address,
+                Email: Email,
+            };
+            //alert(data.Class);
+            $.ajax({
+                url: "controllers/UpdateStudent.php",
+                type: "post",
+				method:"post",
+				datatype: "json",
+                data: data,
+				success: function(report)
+				{	
+                
 				}
             });			
         }
@@ -162,20 +191,6 @@
         type: "POST",
         url: "controllers/Classlist.php",
         dataType: "json",
-<<<<<<< HEAD
-        success: function(result) {		
-			var html = "";
-            for (value of result) {
-                    if (value == 0) {
-                        html += `<option selected value="${value.MaLop}">${value.TenLop}</option>`;
-                    } else {
-                        html += `<option  value="${value.MaLop}">${value.TenLop}</option>`;
-                    }
-                }
-                console.log(html)
-                $('#Lop').html(html);
-		}
-=======
         success: function(result) {
             helpers.buildDropdown(
                     result,
@@ -202,18 +217,91 @@
             }
             $('#ClassList').html(html);
             }
->>>>>>> b92396f32b5f24be7fdd2eef14476b07fc0fc2ff
 		});
+
+            $.ajax({
+            type: "POST",
+            url: "controllers/Classlist.php",
+            dataType: "json",
+            success: function(result) {
+                helpers.buildDropdown(
+                        result,
+                        $('#xemlop'),
+                        'Select an option',
+                        'xemlop'
+                    );                
+                var html = "";
+                var i=1;
+                for (value of result) {
+                    html += '<tr>';
+                    html += '<th scope="row">';
+                    html += i++;
+                    html += '</th>';
+                    html += `<td>${value.id}</td>`;
+                    html += `<td>${value.name}</td>`;
+                    html += `<td>${value.value}</td>`;
+                    html += '</tr>'
+                }
+                $('#ClassList').html(html);
+                }
+            });
+            $.ajax({
+            type: "POST",
+            url: "controllers/aClasslist.php",
+            dataType: "json",
+            success: function(result) {helpers.buildDropdown(
+                        result,
+                        $('#themlop'),
+                        'Select an option',
+                        'themlop');
+                    }
+            });
+
 		}
-		function XoaHs(id)
-		{
-			$(`#${id}`).closest('tr').addClass('removeRow');
-        	$('.removeRow').fadeOut(1000);
+		function XemHs(id){
         	$.ajax({
-            url: 'controllers/DeleteStudent.php',
+            url: 'controllers/In4Student.php',
             type: 'POST',
             dataType: 'json',
             data: { id: id },
+            success: function(result) {
+                var html='';
+                html+='<div class="col-4"> <div class="card"> <div class="card-header"> Thông tin học sinh </div>';
+                html+='<div class="card-body"> <table class="table">';
+                html+='<tr> <td>Mã học sinh : </td> <td> <b>';
+                html+= result[0].MaHs;
+                html+='</b> </td> </tr><tr> <td>Họ Và Tên : </td> <td>';
+                html+= result[0].TenHs;
+                html+= '</td> </tr><tr> <td> Gioi tinh : </td> <td>';
+                html+= result[0].GT;
+                html+= '</td> </tr><tr> <td> Ngày Sinh : </td> <td>';
+                html+= result[0].NS;
+                html+= '</td> </tr><tr> <td> Địa chỉ : </td> <td> <input type="text" name="DiaChi" id="DiaChi" placeholder="';
+                html+= result[0].DC;
+                html+= '"></td> </tr><tr> <td> Email : </td> <td> <input type="email" name="Email" id="Email" placeholder="';
+                html+= result[0].Email;
+                html+= '"> </td> </tr> </table>';
+                html+='<div class="d-flex justify-content-center"><button type="submit" id="UpdateHS" class="btn btn-primary " style="margin-bottom: 8px;" onclick="suahs(';
+                html+= result[0].MaHs;
+                html+=')">Cập nhật thông tin</button></div>';
+                html+='</div> </div> </div> <d class="col-8"><div class="card"><div class="card-header"> Quá trình học </div><div class="card-body"> <table class="table">';
+                html+='<thead><tr><th scope="col">STT</th><th scope="col">Năm học</th><th scope="col">Học kỳ</th><th scope="col">Lớp</th><th scope="col"> Điểm Trung Bình</th> </tr></thead><tbody id="QTH"></tbody></table></div></div></div>';                $('#In4S').html(html);
+                var html = "";
+			    var i=1;
+                for (value of result) {
+                    html += '<tr>';
+					html += '<th scope="row">';
+					html += i++;
+					html += '</th>';
+                    html += `<td id="Mahs">${value.NH}</td>`;
+                    html += `<td>${value.HK}</td>`;
+                    html += `<td>${value.Lop}</td>`;
+                    html += `<td>${value.Diem}</td>`;
+                    html += '</tr>'
+                }
+                $('#QTH').html(html);
+                // console.log(result);
+            }
         	});
 		}
 		function xem()
@@ -233,12 +321,12 @@
                     </div>
                     <div class="card-body">
                         <table class="table">
-                            <tr>
+                            <!-- <tr>
                                 <td>Mã Học Sinh : </td>
                                 <td>
                                     <input type="text" name="MSHS" id="MSHS" style="margin-left:60px">
                                 </td>
-                            </tr>
+                            </tr> -->
                             <tr>
                                 <td>Họ Và Tên : </td>
                                 <td>
@@ -257,7 +345,7 @@
                             <tr>
                                 <td>Ngày Sinh : </td>
                                 <td>
-                                    <input type="date" name="Date" id="Date" style="margin-left:60px">
+                                    <input type="date" name="Date" id="Date" style="margin-left:60px" >
                                 </td>
                             </tr>
                             <tr>
@@ -269,7 +357,7 @@
                             <tr>
                                 <td>Email : </td>
                                 <td>
-                                    <input type="email" name="Email" id="Email" style="margin-left:60px">
+                                    <input type="email" name="Email" id="Email" style="margin-left:60px" placeholder="...@gmail.com">
                                 </td>
                             </tr>
 							<tr>
@@ -286,24 +374,25 @@
                     </div>
                 </div>
 					
-					<div class="card">
-						<div class="card-header">
-							Danh sách các lớp
-						</div>
-						<div class="card-body">
-							<table class="table table-hover">
-								<thead>
-									<tr>
-										<th scope="col">STT</th>
-										<th scope="col">Mã Lớp</th>
-										<th scope="col">Tên Lớp</th>
-									</tr>
-								</thead>
-								<tbody id="ClassList">
-								</tbody>
-							</table>
-						</div>
-					</div>
+                <div class="card">
+                    <div class="card-header">
+                        Danh sách các lớp
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">STT</th>
+                                    <th scope="col">Mã Lớp</th>
+                                    <th scope="col">Tên Lớp</th>
+                                    <th scope="col">Sĩ số</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ClassList">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 				</div>
 
 				<div class="col-6">
@@ -334,6 +423,8 @@
 					</div>
 				</div>
 			</div>
+            <div class="row" id="In4S">
+            </div>
 		</div>
 <script type="text/javascript" src="js/sendDatahs.js"></script>
 <?php include 'View/element/footer.php'; ?>
