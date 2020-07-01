@@ -142,7 +142,8 @@
             // const Date = document.getElementById("NgaySinh").value;
             const Address = document.getElementById("DiaChi").value;
             const Email = document.getElementById("Email").value;
-
+            console.log(id);
+            alert(id);
             const data = {
                 MSHS: id,
                 // Name: Name,
@@ -151,13 +152,13 @@
                 Address: Address,
                 Email: Email,
             };
-            //alert(data.Class);
+            console.log(data);
             $.ajax({
                 url: "controllers/UpdateStudent.php",
                 type: "post",
 				method:"post",
-				datatype: "json",
                 data: data,
+				datatype: "json",
 				success: function(report)
 				{	
                 
@@ -228,7 +229,7 @@
                 html+= '"> </td> </tr> </table>';
                 html+='<div class="d-flex justify-content-center"><button type="submit" id="UpdateHS" class="btn btn-primary " style="margin-bottom: 8px;" onclick="suahs(';
                 html+= result[0].MaHs;
-                html+=')">Cập nhật thông tin</button></div>';
+                html+=');">Cập nhật thông tin</button></div>';
                 html+='</div> </div> </div> <d class="col-8"><div class="card"><div class="card-header"> Quá trình học </div><div class="card-body"> <table class="table">';
                 html+='<thead><tr><th scope="col">STT</th><th scope="col">Năm học</th><th scope="col">Học kỳ</th><th scope="col">Lớp</th><th scope="col"> Điểm Trung Bình</th> </tr></thead><tbody id="QTH"></tbody></table></div></div></div>';                $('#In4S').html(html);
                 var html = "";
