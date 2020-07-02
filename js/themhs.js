@@ -15,7 +15,7 @@ function returnLop_CDK(namhoc) {
                 // } else {
                 //     html += `<option  value="${value.MaLop}">${value.TenLop}</option>`;
                 // }
-                if (value.SiSo < value.SSTD) {
+                if (Number(value.SiSo) < Number(value.SSTD)) {
                     html += `<option  value="${value.MaLop}">${value.TenLop}</option>`;
                 }
             }
@@ -117,7 +117,7 @@ $('#themhs').click(async function() {
             //         dataType: "json",
             //     });
             // }
-            alert(response[0].message);
+            alert(response);
         }
     });
 
@@ -238,6 +238,34 @@ function XemHs(id) {
     });
 }
 
+function suahs(id) {
+    //const Name = document.getElementById("Ten").value;
+    // const MSHS = document.getElementById("MSHS").value;
+    // const Gender = checkbox("GioiTinh");
+    // const Date = document.getElementById("NgaySinh").value;
+    const Address = document.getElementById("DiaChi").value;
+    const Email = document.getElementById("Email").value;
+
+    const data = {
+        MSHS: id,
+        // Name: Name,
+        // Gender: Gender,
+        // Date: Date,
+        Address: Address,
+        Email: Email,
+    };
+    //alert(data.Class);
+    $.ajax({
+        url: "controllers/UpdateStudent.php",
+        type: "post",
+        method: "post",
+        datatype: "json",
+        data: data,
+        success: function(report) {
+
+        }
+    });
+}
 
 function checkbox(Id) {
     var checkbox = document.getElementsByName(Id);

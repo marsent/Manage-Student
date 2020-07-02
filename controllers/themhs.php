@@ -14,12 +14,21 @@ $diachi = $_POST['diachi'];
 $gioitinh = $_POST['gioitinh'];
 $email = $_POST['email'];
 
-$rows = mysqli_fetch_assoc($conn->query('select count(MaHocSinh) as SL from hocsinh'));
-$a = (int)$rows['SL']+1;
-$mhs='HS'.(string)$a;
-
 $age = date_diff(date_create(), date_create($tuoi))->format('%Y');
 $row=mysqli_fetch_assoc($conn->query('select * from hocsinh where HoTen like "'.$ten.'"'));
+if(
+    $age > mysqli_fetch_assoc($conn->query('select * from thongso where MaThongSo like "TTD"'))['GiaTri'] ||
+    $age < mysqli_fetch_assoc($conn->query('select * from thongso where MaThongSo like "TTT"'))['GiaTri'] ||
+    ( $row['GioiTinh'] == $gioitinh&&
+      $row['NgaySinh'] == $tuoi &&
+      $row['DiaChi'] == $diachi &&
+      $row['Email'] == $email)
+  ){
+echo "Lỗi";
+}
+else{ $rows = mysqli_fetch_assoc($conn->query('select count(MaHocSinh) as SL from hocsinh'));
+$a = (int)$rows['SL']+1;
+$mhs='HS'.(string)$a;
 
 $sql="INSERT INTO `hocsinh`(`MaHocSinh`, `HoTen`, `GioiTinh`, `NgaySinh`, `DiaChi`, `Email`)
 VALUES ('$mhs','$ten','$gioitinh','$tuoi','$diachi','$email')";
@@ -32,4 +41,4 @@ $sql="INSERT INTO `quatrinhhoc`(`MaQTHoc`, `MaHocSinh`, `MaLop`, `MaHocky`, `Die
 $conn->query($sql);
 $sql='UPDATE `lop` SET `SiSo`=`SiSo`+1 WHERE MaLop = "'.$lop.'"';
 $conn->query($sql);
-?>
+echo "Thành công";}
