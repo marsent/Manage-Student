@@ -8,8 +8,8 @@ class DataAccessHelper
 	{
 		$servername = "localhost";
 		$username = "root";
-		$password = "Tuananh19022k";
-		$dbname = "qlhs";
+		$password = "";
+		$dbname = "newcnpm";
 
 		// Create connection
 		$GLOBALS['conn'] = new mysqli($servername, $username, $password, $dbname);

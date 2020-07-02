@@ -1,18 +1,17 @@
 <?php
 require 'config/databaseController.php';
-$class=$_POST['Class'];
+$namhoc = $_POST['namhoc'];
+$hocky = $_POST['hocky'];
+$lop = $_POST['lop'];
 
 $conn = new DataAccessHelper();
 $conn = $conn->connect();
-$sql ='
-select *
+$sql ='select *
 from hocsinh join quatrinhhoc on hocsinh.MaHocSinh=quatrinhhoc.MaHocSinh
-WHERE MaLop like "'.$class.'"
-and MaHocky=(
+WHERE quatrinhhoc.MaLop="'.$lop.'"  and quatrinhhoc.MaHocky=(
     select MaHocKy
-    WHERE MaLop like "'.$class.'"
-    ORDER BY MaHocKy DESC LIMIT 1
-)';
+    FROM hocky
+    WHERE HocKy="'.$hocky.'" AND MaNam="'.$namhoc.'")';
 
 $result = $conn->query($sql);
 $list = array();
