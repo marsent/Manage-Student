@@ -60,10 +60,6 @@ $.ajax({
     }
 });
 /** dropdown lớp*/
-$('#Lop').mouseover(function() {
-    var namhoc = $('#NamHoc').val();
-    returnLop_CDK(namhoc);
-});
 $('#NamHoc').mouseout(function() {
     var namhoc = $('#NamHoc').val();
     returnLop_CDK(namhoc);
@@ -87,7 +83,38 @@ $('#themhs').click(async function() {
     var tuoi = $('#tuoi').val();
     var diachi = $('#diachi').val();
     var email = $('#Email').val();
-
+    const error = {
+        ten: "Chưa nhập tên",
+        gt: "Chưa chọn giới tính",
+        ngaysinh: "Chưa nhập ngày tháng năm sinh",
+        dc: "Chưa nhập địa chỉ",
+        Email: "Chưa nhập Email",
+        lop: "Chưa chọn lớp"
+    };
+    if (ten == '') {
+        alert(error.ten);
+        return;
+    }
+    if (gioitinh != 'Nam' && gioitinh != 'Nữ') {
+        alert(error.gt);
+        return;
+    }
+    if (tuoi == '') {
+        alert(error.ngaysinh);
+        return;
+    }
+    if (diachi == '') {
+        alert(error.dc);
+        return;
+    }
+    if (email == '') {
+        alert(error.email);
+        return;
+    }
+    if (lop == '') {
+        alert(error.lop);
+        return;
+    }
     await $.ajax({
         type: "POST",
         url: "controllers/themhs.php",
@@ -104,20 +131,7 @@ $('#themhs').click(async function() {
 
         dataType: "json",
         success: function(response) {
-            // if (response[0].error == false) {
-            //     $.ajax({
-            //         type: "POST",
-            //         url: "controllers/taobaocaothongkemon.php",
-            //         data: {
-            //             namhoc: namhoc,
-            //             hocky: hocky,
-            //             lop: lop,
-            //             monhoc: monhoc
-            //         },
-            //         dataType: "json",
-            //     });
-            // }
-            alert(response);
+            alert(response[0].message);
         }
     });
 
@@ -200,7 +214,7 @@ function XemHs(id) {
             var html = '';
             html += '<div class="col-4"> <div class="card"> <div class="card-header"> Thông tin học sinh </div>';
             html += '<div class="card-body"> <table class="table">';
-            html += '<tr> <td>Mã học sinh : </td> <td> <b>';
+            html += '<tr> <td>Mã học sinh : </td> <td id="MHS"> <b>';
             html += result[0].MaHs;
             html += '</b> </td> </tr><tr> <td>Họ Và Tên : </td> <td>';
             html += result[0].TenHs;
@@ -208,14 +222,14 @@ function XemHs(id) {
             html += result[0].GT;
             html += '</td> </tr><tr> <td> Ngày Sinh : </td> <td>';
             html += result[0].NS;
-            html += '</td> </tr><tr> <td> Địa chỉ : </td> <td> <input type="text" name="DiaChi" id="DiaChi" placeholder="';
+            html += '</td> </tr><tr> <td> Địa chỉ : </td> <td> <input type="text" name="DiaChi" id="suaDiaChi" placeholder="';
             html += result[0].DC;
-            html += '"></td> </tr><tr> <td> Email : </td> <td> <input type="email" name="Email" id="Email" placeholder="';
+            html += '"></td> </tr><tr> <td> Email : </td> <td> <input type="email" name="Email" id="suaEmail" placeholder="';
             html += result[0].Email;
             html += '"> </td> </tr> </table>';
-            html += '<div class="d-flex justify-content-center"><button type="submit" id="UpdateHS" class="btn btn-primary " style="margin-bottom: 8px;" onclick="suahs(';
+            html += '<div class="d-flex justify-content-center"><button type="submit" id="';
             html += result[0].MaHs;
-            html += ')">Cập nhật thông tin</button></div>';
+            html += '" class="btn btn-primary " style="margin-bottom: 8px;" onclick="suahs(this.id)">Cập nhật thông tin</button></div>';
             html += '</div> </div> </div> <d class="col-8"><div class="card"><div class="card-header"> Quá trình học </div><div class="card-body"> <table class="table">';
             html += '<thead><tr><th scope="col">STT</th><th scope="col">Năm học</th><th scope="col">Học kỳ</th><th scope="col">Lớp</th><th scope="col"> Điểm Trung Bình</th> </tr></thead><tbody id="QTH"></tbody></table></div></div></div>';
             $('#In4S').html(html);
@@ -243,9 +257,10 @@ function suahs(id) {
     // const MSHS = document.getElementById("MSHS").value;
     // const Gender = checkbox("GioiTinh");
     // const Date = document.getElementById("NgaySinh").value;
-    const Address = document.getElementById("DiaChi").value;
-    const Email = document.getElementById("Email").value;
-
+    const Address = $('#suaDiaChi').val();
+    const Email = $('#suaEmail').val();
+    // const id = document.getElementById("MHSs").value
+    alert(Email);
     const data = {
         MSHS: id,
         // Name: Name,
@@ -256,7 +271,7 @@ function suahs(id) {
     };
     //alert(data.Class);
     $.ajax({
-        url: "controllers/UpdateStudent.php",
+        url: "controllers/suaHS.php",
         type: "post",
         method: "post",
         datatype: "json",

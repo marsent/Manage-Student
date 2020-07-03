@@ -9,7 +9,8 @@ FROM hocsinh JOIN quatrinhhoc on hocsinh.MaHocSinh=quatrinhhoc.MaHocSinh
 JOIN lop on lop.MaLop=quatrinhhoc.MaLop
 join hocky on hocky.MaHocKy=quatrinhhoc.MaHocKy
 JOIN namhoc on namhoc.MaNam=hocky.MaNam
-WHERE hocsinh.MaHocSinh = "'.$id.'"';
+WHERE hocsinh.MaHocSinh = "'.$id.'"
+ORDER BY quatrinhhoc.MaQTHoc ASC ';
 
 $result = $conn->query($sql);
 $list = array();

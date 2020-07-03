@@ -11,7 +11,8 @@ from hocsinh join quatrinhhoc on hocsinh.MaHocSinh=quatrinhhoc.MaHocSinh
 WHERE quatrinhhoc.MaLop="'.$lop.'"  and quatrinhhoc.MaHocky=(
     select MaHocKy
     FROM hocky
-    WHERE HocKy="'.$hocky.'" AND MaNam="'.$namhoc.'")';
+    WHERE HocKy="'.$hocky.'" AND MaNam="'.$namhoc.'")
+    ORDER BY hocsinh.HoTen ASC';
 
 $result = $conn->query($sql);
 $list = array();
