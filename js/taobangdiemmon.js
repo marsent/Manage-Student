@@ -246,15 +246,29 @@ $("#capnhat").click(async function () {
             data: hocsinh,
             success: function (response) {
                 response = JSON.parse(response);
-                if (response.error == false) {
-                    alert(`Nhập điểm học sinh STT${i} thành công`);
-                } else {
-                    alert(`Nhập điểm học sinh STT${i} thất bại: ${response[0].message} `);
+                if (response.error == true) {
+                    alert(`Nhập điểm học sinh ${i} thất bại: ${response[0].message} `);
+                    return;
                 }
             },
         });
+        VanillaToasts.create({
+            title: 'Thông báo',
+            text: `tiến trình đang chạy được ${parseInt((i/rowLength)*100)}%`,
+            type: 'success', // success, info, warning, error   / optional parameter
+            timeout: 2000 // hide after 5000ms, // optional parameter
+        });
         if (i == rowLength - 1) {
-            alert("Cập nhật bảng điểm thành công");
+            VanillaToasts.create({
+                title: 'Thông báo',
+                text: `Hoàn tất nhập bảng điểm`,
+                type: 'success', // success, info, warning, error   / optional parameter
+                timeout: 2000 // hide after 5000ms, // optional parameter
+            });
+            setTimeout(function () {
+                alert("Cập nhật bảng điểm thành công");
+            },1500)
+
         }
     }
 
@@ -262,7 +276,6 @@ $("#capnhat").click(async function () {
     await update_CT_BCTKM(namhoc, hocky, lop, monhoc);
     await update_BCTKHK(namhoc, hocky, lop, monhoc);
 });
-
 $("#capnhat").hide();
 
 function returnBangdiem(namhoc, hocky, lop, monhoc) {

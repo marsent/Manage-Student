@@ -89,7 +89,7 @@
                     <tbody>
                     <?php
                     if (isset($_POST["hocky"]) && isset($_POST["monhoc"]) && isset($_POST["namhoc"])) {
-                        $connect = mysqli_connect("localhost", "root", "", "newcnpm");
+                        $connect = mysqli_connect("localhost", "root","Tuananh19022k", "qlhs");
                         if (!$connect) {
                             die("Fail to connect DB");
                         } else {

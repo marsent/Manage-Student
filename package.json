@@ -8,5 +8,8 @@
     "start": "sass ./sass/style.scss ./css/style.css --watch"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "vanillatoasts": "^1.4.0"
+  }
 }

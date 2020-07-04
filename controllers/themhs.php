@@ -42,7 +42,18 @@ else{
 
     $sql="INSERT INTO `hocsinh`(`MaHocSinh`, `HoTen`, `GioiTinh`, `NgaySinh`, `DiaChi`, `Email`)
     VALUES ('$mhs','$ten','$gioitinh','$tuoi','$diachi','$email')";
-    $conn->query($sql);
+    if($conn->query($sql)==true){
+      $error[] = array(
+        "error" => false,
+        "message" => "Thêm học sinh thành công"
+    );
+    }else{
+      $error[] = array(
+        "error" => true,
+        "message" => "Thêm học sinh thất bại: $conn->error"
+    );
+    }
+    
     $sql = 'select mahocky from hocky where hocky="'.$hocky.'" and manam="'.$namhoc.'"';
     $mahocky = $conn->query($sql);
     $mhk=$mahocky->fetch_row()[0];
@@ -51,10 +62,7 @@ else{
     $conn->query($sql);
     $sql='UPDATE `lop` SET `SiSo`=`SiSo`+1 WHERE MaLop = "'.$lop.'"';
     $conn->query($sql);
-    $error[] = array(
-      "error" => false,
-      "message" => "Thêm học sinh thành công"
-    );
+    
   }
 }
 echo json_encode($error);
