@@ -56,7 +56,6 @@ else{
       $sql="INSERT INTO `quatrinhhoc`(`MaQTHoc`, `MaHocSinh`, `MaLop`, `MaHocky`, `DiemTBHK`) VALUES ('$mqt','$mhs', '$lop','$mhk','')";
       $conn->query($sql);
       }
-    $sql='UPDATE `lop` SET `SiSo`=`SiSo`+1 WHERE MaLop = "'.$lop.'"';
     $conn->query($sql);
     $error[] = array(
       "error" => true,
