@@ -129,6 +129,8 @@ $('#themhs').click(async function() {
 
         dataType: "json",
         success: function(response) {
+            response=JSON.parse(response);
+            console.log(response);
             alert(response[0].message);
             location.reload();
         }

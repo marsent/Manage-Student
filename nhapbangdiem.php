@@ -43,6 +43,7 @@
                             <label class="input-group-text" for="Lop">Lớp</label>
                         </div>
                         <select class="custom-select" id="Lop">
+                       
                         </select>
                     </div>
                 </div>
@@ -87,6 +88,8 @@
         </div>
     </div>
 </div>
+
+    
 
 <script src="js/taobangdiemmon.js"></script>
 

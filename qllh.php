@@ -1,4 +1,6 @@
 <?php
+session_start();
+session_destroy();
 include("View/element/header.php");
 require "controllers/qllh-submit.php";
 ?>
@@ -65,17 +67,6 @@ require "controllers/qllh-submit.php";
 								}
 								?>
 							</select>
-							<select name="hocky" id="" style="margin-bottom: 21px;">
-								<?php
-								$sql_select = "SELECT DISTINCT HocKy FROM hocky";
-								$result_select = mysqli_query($conn, $sql_select);
-								if ($result_select->num_rows > 0) {
-									while ($row = mysqli_fetch_assoc($result_select)) {
-										echo "<option value='$row[HocKy]'>$row[HocKy]</option>";
-									}
-								}
-								?>
-							</select>
 							<select name="namhoc" id="" style="margin-bottom: 21px;">
 								<?php
 								$sql_select = "SELECT DISTINCT * FROM namhoc";
@@ -103,13 +94,12 @@ require "controllers/qllh-submit.php";
 							</thead>
 							<tbody>
 								<?php
-								if (isset($_POST["lopmay"]) && isset($_POST["chonlop"]) && isset($_POST["hocky"]) && isset($_POST["namhoc"])) {
+								if (isset($_POST["lopmay"]) && isset($_POST["chonlop"]) && isset($_POST["namhoc"])) {
 									$chonlophoc = $_POST["lopmay"];
-									$hocky = $_POST["hocky"];
 									$namhoc = $_POST["namhoc"];
 									$sql_lop = "SELECT DISTINCT * FROM hocsinh h, quatrinhhoc q, hocky hk
 												WHERE h.MaHocSinh=q.MaHocSinh AND hk.MaHocKy=q.MaHocKy AND q.MaLop='$chonlophoc'
-												AND hk.HocKy='$hocky' AND hk.MaNam='$namhoc'";
+												 AND hk.MaNam='$namhoc' AND hk.HocKy='Hoc Kỳ 1'";
 									$result_lop = mysqli_query($conn, $sql_lop);
 									if ($result_lop->num_rows > 0) {
 										$count = 0;
@@ -171,12 +161,16 @@ require "controllers/qllh-submit.php";
 											<td><?php echo "$row[MaLop]"; ?></td>
 											<td><?php echo "$row[TenLop]"; ?></td>
 											<td><?php echo "$row[SiSo]"; ?></td>
-											<td><button class="btn btn-primary edit-btn" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Sửa</button></td>
+											<td>
+												<button class="btn btn-primary edit-btn" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Sửa</button>
+											<?php	echo " <form method='POST' action='./controllers/deleteclass.php' style='display:inline-block'><button class='btn btn-primary delete-btn' name='delete' value = '$row[MaLop]'>Xóa</button></form>";?>
+ 											</td>
 										</tr>
 								<?php
 									}
 								}
 								?>
+								<?php if(isset($_SESSION["thongbao"])){echo $_SESSION["thongbao"]; session_unset();} ?>
 								<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 									<div class="modal-dialog" role="document">
 										<div class="modal-content">

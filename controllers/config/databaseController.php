@@ -2,43 +2,61 @@
 
 class DataAccessHelper
 {
-	private $conn;
+    public $conn=null;
+    protected $servername = "localhost";
+    protected $username = "root";
+    protected $password = "";
+    protected $dbname = "newcnpm";
 
-	public function connect()
-	{
-		$servername = "localhost";
-		$username = "root";
-		$password = "";
-		$dbname = "newcnpm";
+    public function __construct()
+    {
+        $this->conn=mysqli_connect($this->servername, $this->username, $this->password, $this->dbname);
+        if ($this->conn->connect_error){
+            echo "Fail " . $this->conn->connect_error;
+        }
+    }
 
-		// Create connection
-		$GLOBALS['conn'] = new mysqli($servername, $username, $password, $dbname);
-		$GLOBALS['conn']->set_charset("utf8");
-		// Check connection
-		if ($GLOBALS['conn']->connect_error) {
-			die("Connection failed: " . $GLOBALS['conn']->connect_error);
-		}
-		//echo "Connected successfully";
-		return $GLOBALS['conn'];
-	}
+    public function connect()
+    {
 
-	public function executeNonQuery($sql)
-	{
-		if ($GLOBALS['conn']->query($sql) === TRUE) {
-			echo "Your query has been executed successfully";
-		} else {
-			echo "Error: " . $sql . "<br>" . $GLOBALS['conn']->error;
-		}
-	}
+        // Create connection
+        $GLOBALS['conn'] = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
+        $GLOBALS['conn']->set_charset("utf8");
+        // Check connection
+        if ($GLOBALS['conn']->connect_error) {
+            die("Connection failed: " . $GLOBALS['conn']->connect_error);
+        }
+        //echo "Connected successfully";
+        return $GLOBALS['conn'];
+    }
 
-	public function executeQuery($sql)
-	{
-		$result = $GLOBALS['conn']->query($sql);
-		return $result;
-	}
+    public function executeNonQuery($sql)
+    {
+        if ($GLOBALS['conn']->query($sql) === TRUE) {
+            echo "Your query has been executed successfully";
+        } else {
+            echo "Error: " . $sql . "<br>" . $GLOBALS['conn']->error;
+        }
+    }
 
-	public function close()
-	{
-		mysqli_close($GLOBALS['conn']);
-	}
+    public function executeQuery($sql)
+    {
+        $result = $GLOBALS['conn']->query($sql);
+        return $result;
+    }
+
+    public function close()
+    {
+        mysqli_close($GLOBALS['conn']);
+    }
+    public function __destruct()
+    {
+        $this->closeConnection();
+    }
+    protected function closeConnection(){
+        if ($this->conn != null ){
+            $this->conn->close();
+            $this->conn = null;
+        }
+    }
 }
