@@ -114,7 +114,7 @@ $('#themhs').click(async function() {
         alert(error.lop);
         return;
     }
-    await $.ajax({
+    $.ajax({
         type: "POST",
         url: "controllers/themhs.php",
         data: {
