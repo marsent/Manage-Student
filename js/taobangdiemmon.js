@@ -254,7 +254,7 @@ $("#capnhat").click(async function () {
         });
         VanillaToasts.create({
             title: 'Thông báo',
-            text: `tiến trình đang chạy được ${parseFloat((i/rowLength)*100).toFixed(1)}%`,
+            text: `tiến trình đang chạy được ${parseInt((i/rowLength)*100)}%`,
             type: 'success', // success, info, warning, error   / optional parameter
             timeout: 2000 // hide after 5000ms, // optional parameter
         });
