@@ -76,7 +76,6 @@ $('#NamHoc3').mouseout(function() {
 
 $('#themhs').click(async function() {
     var namhoc = $('#NamHoc').val();
-    var hocky = $('#HocKy').val();
     var lop = $('#Lop').val();
     var ten = $('#ten').val();
     var gioitinh = checkbox("Gender");
@@ -120,7 +119,6 @@ $('#themhs').click(async function() {
         url: "controllers/themhs.php",
         data: {
             namhoc: namhoc,
-            hocky: hocky,
             lop: lop,
             ten: ten,
             tuoi: tuoi,
@@ -132,11 +130,9 @@ $('#themhs').click(async function() {
         dataType: "json",
         success: function(response) {
             alert(response[0].message);
+            location.reload();
         }
     });
-
-    // await returnBangdiem(namhoc, hocky, lop, monhoc);
-    // $('#capnhat').show();
 });
 
 function xemDSL() {
@@ -260,7 +256,6 @@ function suahs(id) {
     const Address = $('#suaDiaChi').val();
     const Email = $('#suaEmail').val();
     // const id = document.getElementById("MHSs").value
-    alert(Email);
     const data = {
         MSHS: id,
         // Name: Name,
@@ -276,8 +271,9 @@ function suahs(id) {
         method: "post",
         datatype: "json",
         data: data,
-        success: function(report) {
-
+        success: function() {
+            alert("Cập nhật thông tin thành công");
+            window.location.reload();
         }
     });
 }

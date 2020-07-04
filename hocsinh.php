@@ -67,7 +67,7 @@
                                     </select>
                                 </td>
                             </tr>
-                            <tr>
+                            <!-- <tr>
                                 <td>Học kỳ:</td>
                                 <td>
 									<select style="margin-left:60px;" id="HocKy" name="hocky">
@@ -75,7 +75,7 @@
                                     <option value="Học kỳ 2">Học kỳ 2</option>
                                     </select>
                                 </td>
-                            </tr>
+                            </tr> -->
 							<tr>
                                 <td>Lớp:</td>
                                 <td>
@@ -95,11 +95,8 @@
                         Danh sách các lớp
                     </div>
                     <div class="card-body">
-                        <table class="table">
-                                    <tr>
-                                <td>Năm học:</td>
-                                <td style=>
-									<select  id="NamHoc2" name="namhoc" onchange="xemDSL()">
+                        <span>
+                            Năm học:<select  id="NamHoc2" name="namhoc" onchange="xemDSL()" style="margin-left: 10px;">
                                     <?php
                                     $html="";
                                     foreach($namhoc as $value){
@@ -108,10 +105,8 @@
                                     echo $html;
                                     ?>
                                     </select>
-                                </td>
-                            </tr>
-                            </table>
-                        <table class="table table-hover">
+                        </span>
+                        <table class="table table-hover" style="margin-top: 15px;">
                             <thead>
                                 <tr>
                                     <th scope="col">STT</th>
@@ -180,7 +175,7 @@
 					</div>
 				</div>
 			</div>
-            <div class="row" id="In4S">
+            <div class="row" id="In4S" style="margin-top: 25px;">
             </div>
 		</div>
 <script type="text/javascript" src="js/sendDatahs.js"></script>
