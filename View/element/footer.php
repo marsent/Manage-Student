@@ -9,6 +9,8 @@
     <script src="vendor/datatables/jquery.dataTables.min.js"></script>
   <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
     <script src="js/datatables.js"></script>
+    <!-- Toastìfy -->
+    <script src="vendor/vanillatoasts/vanillatoasts.js"></script>
 </body>
 
 </html>
