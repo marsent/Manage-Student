@@ -17,7 +17,8 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 	<!-- Data table -->
 	<link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
+	<!-- toasttify -->
+	<link rel="stylesheet" href="vendor/vanillatoasts/vanillatoasts.css">
 	<!-- Custom Css -->
 	<link rel="stylesheet" href="./css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/sb-admin-2.css">
