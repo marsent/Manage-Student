@@ -33,32 +33,14 @@ else{
       "error" => true,
       "message" => "Học sinh đã tồn tại"
       );
+      goto end;
     }
     else{ 
-      $rows = mysqli_fetch_assoc($conn->query('select count(MaHocSinh) as SL from hocsinh'));
-      $a = (int)$rows['SL']+1;
-      $mhs='HS'.(string)$a;
-  
-      $sql="INSERT INTO `hocsinh`(`MaHocSinh`, `HoTen`, `GioiTinh`, `NgaySinh`, `DiaChi`, `Email`)
-      VALUES ('$mhs','$ten','$gioitinh','$tuoi','$diachi','$email')";
-      $conn->query($sql);
-      $sql = 'select mahocky from hocky where manam="'.$namhoc.'"';
-      $result = $conn->query($sql);
-      while ($rows = $result->fetch_assoc()) {
-        $mhk=$rows['MaHocKy'];
-        $mqt=$mhs.$mhk;
-        $sql="INSERT INTO `quatrinhhoc`(`MaQTHoc`, `MaHocSinh`, `MaLop`, `MaHocky`, `DiemTBHK`) VALUES ('$mqt','$mhs', '$lop','$mhk','')";
-        $conn->query($sql);
-        }
-      $sql='UPDATE `lop` SET `SiSo`=`SiSo`+1 WHERE MaLop = "'.$lop.'"';
-      $conn->query($sql);
-      $error[] = array(
-        "error" => false,
-        "message" => "Thêm học sinh thành công"
-      );
+      goto them;
     }
   }
-  else{ 
+  else{
+    them:
     $rows = mysqli_fetch_assoc($conn->query('select count(MaHocSinh) as SL from hocsinh'));
     $a = (int)$rows['SL']+1;
     $mhs='HS'.(string)$a;
@@ -82,5 +64,6 @@ else{
       );
   }
 }
+end:
 echo json_encode($error);
 $conn->close();
