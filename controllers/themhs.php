@@ -20,27 +20,24 @@ if($DKT){
       "error" => true,
       "message" => "Học sinh nằm ngoài độ tuổi tiếp nhận"
   );
+  echo json_encode($error);
+  goto end;
 }
-else{  
-  $row=mysqli_fetch_assoc($conn->query('select * from hocsinh where HoTen like "'.$ten.'"')); 
-  if($row !=Null){
-    $DKT =($row['GioiTinh'] == $gioitinh&&
-        $row['NgaySinh'] == $tuoi &&
-        $row['DiaChi'] == $diachi &&
-        $row['Email'] == $email);
-    if($DKT){
-      $error[] = array(
-      "error" => true,
-      "message" => "Học sinh đã tồn tại"
-      );
-      goto end;
-    }
-    else{ 
-      goto them;
-    }
+$row=mysqli_fetch_assoc($conn->query('select * from hocsinh where HoTen like "'.$ten.'"')); 
+if($row !=Null){
+  $DKT =($row['GioiTinh'] == $gioitinh&&
+      $row['NgaySinh'] == $tuoi &&
+      $row['DiaChi'] == $diachi &&
+      $row['Email'] == $email);
+  if($DKT){
+    $error[] = array(
+    "error" => true,
+    "message" => "Học sinh đã tồn tại"
+    );
+    echo json_encode($error);
+    goto end;
   }
-  else{
-    them:
+}
     $rows = mysqli_fetch_assoc($conn->query('select count(MaHocSinh) as SL from hocsinh'));
     $a = (int)$rows['SL']+1;
     $mhs='HS'.(string)$a;
@@ -60,9 +57,6 @@ else{
     $error[] = array(
       "error" => true,
       "message" => "Thêm học sinh thành công"
-      );
-  }
-}
-end:
+);
 echo json_encode($error);
-$conn->close();
+end:$conn->close();
