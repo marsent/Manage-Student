@@ -17,7 +17,7 @@ async function updateSubject(id) {
                 mamonhoc: mamonhoc,
             },
             dataType: "json",
-            success: function (response) {
+            success: function(response) {
                 alert(response[0].message);
             },
         });
@@ -35,7 +35,7 @@ async function deleteSubject(id) {
             mamonhoc: mamonhoc,
         },
         dataType: "json",
-        success: function (response) {
+        success: function(response) {
             alert(response[0].message);
         },
     });
@@ -44,7 +44,7 @@ $.ajax({
     type: "POST",
     url: "controllers/returnthongso.php",
     dataType: "json",
-    success: function (response) {
+    success: function(response) {
         var minAge = getthongso(response, "TTT");
         var maxAge = getthongso(response, "TTD");
         var passingScoreS = getthongso(response, "DDM");
@@ -71,7 +71,7 @@ $.ajax({
     type: "POST",
     url: "controllers/monhoc.php",
     dataType: "json",
-    success: function (response) {
+    success: function(response) {
         var html = "";
         for (value of response) {
             html += `<tr id="${value.MaMonHoc}">
@@ -87,7 +87,7 @@ $.ajax({
     type: "POST",
     url: "controllers/namhoc.php",
     dataType: "json",
-    success: function (response) {
+    success: function(response) {
         var html = "";
         for (value of response) {
             html += `<option value="${value.MaNam}">${value.NamHoc}</option>`;
@@ -95,7 +95,7 @@ $.ajax({
         $("#cmbnamadd").html(html);
     },
 });
-$("#addSubject").click(async function () {
+$("#addSubject").click(async function() {
     var mamonhoc = $("#txtmamonhocadd").val();
     var tenmonhoc = $("#txttenmonhocadd").val();
     var heso = $("#numhesoadd").val();
@@ -114,7 +114,7 @@ $("#addSubject").click(async function () {
             bang: bang,
         },
         dataType: "json",
-        success: function (response) {
+        success: function(response) {
             alert(response[0].message);
         },
     });
@@ -122,7 +122,7 @@ $("#addSubject").click(async function () {
         type: "POST",
         url: "controllers/monhoc.php",
         dataType: "json",
-        success: function (response) {
+        success: function(response) {
             var html = "";
             for (value of response) {
                 html += `<tr id="${value.MaMonHoc}">
@@ -135,7 +135,7 @@ $("#addSubject").click(async function () {
         },
     });
 });
-$("#updateAge").click(function () {
+$("#updateAge").click(function() {
     var minAge = $("#inputMinAge").val();
     var maxAge = $("#inputMaxAge").val();
     $.ajax({
@@ -146,13 +146,13 @@ $("#updateAge").click(function () {
             maxAge: maxAge,
         },
         dataType: "json",
-        success: function (response) {
+        success: function(response) {
             alert(response[0].message + "\n" + response[1].message);
         },
     });
 });
 
-$("#updateScore").click(async function () {
+$("#updateScore").click(async function() {
     var pSS = $("#inputPassingSocreS").val();
     var pS = $("#inputPassingScore").val();
     await $.ajax({
@@ -163,13 +163,13 @@ $("#updateScore").click(async function () {
             pS: pS,
         },
         dataType: "json",
-        success: function (response) {
+        success: function(response) {
             alert(response[0].message + "\n" + response[1].message);
         },
     });
 });
 
-$("#updatenumclass").click(async function () {
+$("#updatenumclass").click(async function() {
     var numStudent = $("#MaxNumberOfStudent").val();
     var numClass = $("#NumberOfClass").val();
     var state = $("#inputState").val();
@@ -182,7 +182,7 @@ $("#updatenumclass").click(async function () {
             state: state,
         },
         dataType: "json",
-        success: function (response) {
+        success: function(response) {
             alert(response[0].message + "\n" + response[1].message);
         },
     });
