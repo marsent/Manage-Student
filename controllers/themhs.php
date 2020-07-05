@@ -48,7 +48,7 @@ else{
     $sql="INSERT INTO `hocsinh`(`MaHocSinh`, `HoTen`, `GioiTinh`, `NgaySinh`, `DiaChi`, `Email`)
     VALUES ('$mhs','$ten','$gioitinh','$tuoi','$diachi','$email')";
     $conn->query($sql);
-    $sql = 'select * from hocky where manam="'.$namhoc.'"';
+    $sql = 'select * from hocky where MaNam like "'.$namhoc.'"';
     $result = $conn->query($sql);
     while ($rows = $result->fetch_assoc()) {
       $mhk=$rows['MaHocKy'];

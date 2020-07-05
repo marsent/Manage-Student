@@ -6,7 +6,7 @@ class DataAccessHelper
     protected $servername = "localhost";
     protected $username = "root";
     protected $password = "";
-    protected $dbname = "newcnpm";
+    protected $dbname = "newcnpm1";
 
     public function __construct()
     {
