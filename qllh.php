@@ -4,6 +4,7 @@ session_destroy();
 include("View/element/header.php");
 require "controllers/qllh-submit.php";
 ?>
+<?php if(isset($_SESSION["thongbao"])){echo $_SESSION["thongbao"]; session_unset();} ?>
 <div class="container-fluid">
 	<h1 style="text-align: center">THÔNG TIN LỚP HỌC</h1>
 	<div class="row">
@@ -170,7 +171,7 @@ require "controllers/qllh-submit.php";
 									}
 								}
 								?>
-								<?php if(isset($_SESSION["thongbao"])){echo $_SESSION["thongbao"]; session_unset();} ?>
+								
 								<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 									<div class="modal-dialog" role="document">
 										<div class="modal-content">
@@ -239,10 +240,12 @@ require "controllers/qllh-submit.php";
 				url: "controllers/updateclass.php",
 				data: {
 					malop: malop,
-					tenlop: tenlop	
+					tenlop: tenlop,	
 				},
-				dataType: "json" 
-				
+				dataType: "json" ,
+				success: function (response) {
+            	alert(response[0].message);
+       			 },
 			});
 		})
 		})
