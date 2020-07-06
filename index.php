@@ -8,7 +8,7 @@
 
     .bg {
         /* The image used */
-        background-image: url("https://www.isd518.net/wp-content/uploads/2020/01/isd518-highschool.jpg");
+        background-image: url("./img/background.jpg");
 
         /* Full height */
         height: 100%;
