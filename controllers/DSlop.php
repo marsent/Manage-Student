@@ -4,6 +4,14 @@ $db = new DataAccessHelper();
 $conn = $db->connect();
 $namhoc=$_POST['namhoc'];
 
+$result = $conn->query('SELECT COUNT(DISTINCT MaHocSinh) as SS, lop.MaLop FROM quatrinhhoc right join lop on lop.MaLop=quatrinhhoc.MaLop GROUP by lop.MaLop');
+while ($rows = $result->fetch_assoc()) {
+    $ss = $rows['SS'];
+    $l= $rows['MaLop'];
+    // echo $ss." ". $l."<br>";
+    $update= $conn->query('UPDATE lop SET lop.SiSo='.$ss.' WHERE MaLop="'.$l.'" and MaNam="'.$namhoc.'"');
+}
+
 $result = $conn->query("SELECT DISTINCT lop.*
 FROM lop JOIN khoilop ON lop.MaKhoiLop=khoilop.MaKhoiLop
 WHERE khoilop.MaNam='".$namhoc."'");
