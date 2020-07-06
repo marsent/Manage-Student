@@ -14,7 +14,7 @@
                             </div>
                             <select class="custom-select" id="namhoc" name="namhoc">
                                 <?php
-                                $conn = mysqli_connect("localhost","root","Tuananh19022k", "qlhs");
+                                $conn = mysqli_connect("localhost","root","", "newcnpm");
                                 if($conn){
                                     echo "Ok";
                                 }else{
@@ -64,7 +64,7 @@
                     <tbody>
                         <?php
                         if (isset($_POST["hocky"])&& isset($_POST["namhoc"])) {
-                            $connect = mysqli_connect("localhost", "root", "Tuananh19022k", "qlhs");
+                            $connect = mysqli_connect("localhost", "root", "", "newcnpm");
                             if (!$connect) {
                                 die("Fail to connect DB");
                             } else {

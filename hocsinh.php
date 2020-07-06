@@ -80,6 +80,7 @@
                                 <td>Lớp:</td>
                                 <td>
 									<select style="margin-left:60px;" id="Lop" name="Lop">
+
                                     </select>
                                 </td>
                             </tr>
@@ -99,6 +100,7 @@
                             Năm học:<select  id="NamHoc2" name="namhoc" onchange="xemDSL()" style="margin-left: 10px;">
                                     <?php
                                     $html="";
+                                    $html.='<option value="" >Chọn năm</option>';
                                     foreach($namhoc as $value){
                                     $html.="<option value=".$value['MaNam'].">".$value['NamHoc']."</option>";
                                     }

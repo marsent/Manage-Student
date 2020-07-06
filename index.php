@@ -32,7 +32,7 @@
 </style>
 <div class="main">
     <div class="bg">
-    <h2>Phần Mềm Quản Lí Học Sinh</h2>
+    <h2 class="text-center h2" style="color:black">Phần Mềm Quản Lí Học Sinh</h2>
     </div>
 </div>
 

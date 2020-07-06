@@ -272,7 +272,7 @@ function suahs(id) {
         data: data,
         success: function() {
             alert("Cập nhật thông tin thành công");
-            window.location.reload();
+            this.location.reload();
         }
     });
 }
