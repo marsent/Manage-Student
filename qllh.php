@@ -163,7 +163,7 @@ require "controllers/qllh-submit.php";
 											<td><?php echo "$row[TenLop]"; ?></td>
 											<td><?php echo "$row[SiSo]"; ?></td>
 											<td>
-												<button class="btn btn-primary edit-btn" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Sửa</button>
+											<button class="btn btn-primary edit-btn" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Sửa</button>
 											<?php	echo " <form method='POST' action='./controllers/deleteclass.php' style='display:inline-block'><button class='btn btn-primary delete-btn' name='delete' value = '$row[MaLop]'>Xóa</button></form>";?>
  											</td>
 										</tr>
@@ -234,23 +234,26 @@ require "controllers/qllh-submit.php";
 			console.log(1);
 			var malop = document.querySelector("#classCode").value;
 			var tenlop = document.querySelector("#className").value;
+			var siso = document.value;
 			console.log(malop,tenlop);
 			$.ajax({
 				type: "POST",
-				url: "controllers/updateclass.php",
+				url: "./controllers/updateclass.php",
 				data: {
 					malop: malop,
-					tenlop: tenlop,	
+					tenlop: tenlop,
+					siso: siso,
 				},
 				dataType: "json" ,
-				success: function (response) {
-            	alert(response[0].message);
-       			 },
+				// success: function (response) {
+            	// alert(response[0].message);
+       			//  },
 			});
 		})
 		})
 
 	})
+	
 </script>
 
 <!-- JS boostrap 4 -->
