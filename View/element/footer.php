@@ -1,5 +1,5 @@
     <div class="copyright text-center bg-dark text-white py-2">
-    <p class="font-rale font-size-14">&copy; Copyrights 2020. Desing By <a href="#" class="color-second">ai biết</a></p>
+    <p class="font-rale font-size-14">&copy; Copyrights 2020. Desing By <a href="#" class="color-second">Nhóm ???</a></p>
 </div>
 
     <!-- JS boostrap 4 -->

@@ -14,7 +14,7 @@
                             </div>
                             <select class="custom-select" id="namhoc" name="namhoc">
                             <?php
-                                $conn = mysqli_connect("localhost","root","Tuananh19022k","qlhs");
+                                $conn = mysqli_connect("localhost","root","","newcnpm");
                                 $Mysql = "SELECT * FROM namhoc";
 
                                 $result1 = $conn->query($Mysql);
@@ -48,7 +48,7 @@
                             <select class="custom-select" id="monhoc" name="monhoc">
 
                             <?php 
-                            $conn = mysqli_connect("localhost","root","Tuananh19022k","qlhs");
+                            $conn = mysqli_connect("localhost","root","","newcnpm");
                             $sql = "SELECT * FROM monhoc";
                             mysqli_set_charset($conn,"utf8");
 

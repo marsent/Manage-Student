@@ -230,13 +230,13 @@ require "controllers/qllh-submit.php";
 				$(this).val(value);
 
 			});
-			$("#save").click(function() {
+			$("#save").click(async function() {
 			console.log(1);
 			var malop = document.querySelector("#classCode").value;
 			var tenlop = document.querySelector("#className").value;
 			var siso = document.value;
 			console.log(malop,tenlop);
-			$.ajax({
+			await $.ajax({
 				type: "POST",
 				url: "./controllers/updateclass.php",
 				data: {
@@ -245,9 +245,10 @@ require "controllers/qllh-submit.php";
 					siso: siso,
 				},
 				dataType: "json" ,
-				// success: function (response) {
-            	// alert(response[0].message);
-       			//  },
+				success: function (response) {
+				alert(response[0].message);
+				location.reload();
+       			 },
 			});
 		})
 		})

@@ -153,16 +153,6 @@
                                 <td>Lớp:</td>
                                 <td>
                                     <select id="Lop3" name="Lop" onchange="xemDSHS()">
-                                    <?php
-								$malop = "";
-								$sql_select = "SELECT * FROM lop";
-								$result_select = mysqli_query($conn, $sql_select);
-								if ($result_select->num_rows > 0) {
-									while ($row = mysqli_fetch_assoc($result_select)) {
-										echo "<option value='$row[MaLop]'>$row[TenLop]</option>";
-									}
-								}
-								?>
                                     </select>
                                 </td>
                         </table>
