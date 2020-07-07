@@ -24,24 +24,24 @@ function returnLop_CDK(namhoc) {
     });
 }
 
-function returnLop(namhoc) {
-    $.ajax({
-        type: "POST",
-        url: "controllers/DSlop.php",
-        dataType: "json",
-        data: {
-            namhoc: namhoc
-        },
-        success: function(response) {
-            html = "";
-            html += `<option  value="">Chọn lớp</option>`;
-            for (value of response) {
-                html += `<option  value="${value.MaLop}">${value.TenLop}</option>`;
-            }
-            $('#Lop3').html(html);
-        }
-    });
-}
+// function returnLop(namhoc) {
+//     $.ajax({
+//         type: "POST",
+//         url: "controllers/DSlop.php",
+//         dataType: "json",
+//         data: {
+//             namhoc: namhoc
+//         },
+//         success: function(response) {
+//             html = "";
+//             html += `<option  value="">Chọn lớp</option>`;
+//             for (value of response) {
+//                 html += `<option  value="${value.MaLop}">${value.TenLop}</option>`;
+//             }
+//             $('#Lop3').html(html);
+//         }
+//     });
+// }
 /** dropdown năm */
 $.ajax({
     type: "POST",
@@ -65,14 +65,14 @@ $('#NamHoc').mouseout(function() {
     returnLop_CDK(namhoc);
 });
 
-$('#Lop3').mouseover(function() {
-    var namhoc = $('#NamHoc3').val();
-    returnLop(namhoc);
-});
-$('#NamHoc3').mouseout(function() {
-    var namhoc = $('#NamHoc3').val();
-    returnLop(namhoc);
-});
+// $('#Lop3').mouseover(function() {
+//     var namhoc = $('#NamHoc3').val();
+//     returnLop(namhoc);
+// });
+// $('#NamHoc3').mouseout(function() {
+//     var namhoc = $('#NamHoc3').val();
+//     returnLop(namhoc);
+// });
 
 $('#themhs').click(async function() {
     var namhoc = $('#NamHoc').val();

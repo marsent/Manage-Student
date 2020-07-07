@@ -112,6 +112,8 @@ $("#taobangdiem").click(async function () {
     });
 
     await returnBangdiem(namhoc, hocky, lop, monhoc);
+    await update_CT_BCTKM(namhoc, hocky, lop, monhoc);
+    await update_BCTKHK(namhoc, hocky, lop, monhoc);
     $("#capnhat").show();
 });
 /**cập nhật điểm */

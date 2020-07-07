@@ -4,6 +4,7 @@ session_destroy();
 include("View/element/header.php");
 require "controllers/qllh-submit.php";
 ?>
+<?php if(isset($_SESSION["thongbao"])){echo $_SESSION["thongbao"]; session_unset();} ?>
 <div class="container-fluid">
 	<h1 style="text-align: center">THÔNG TIN LỚP HỌC</h1>
 	<div class="row">
@@ -162,7 +163,7 @@ require "controllers/qllh-submit.php";
 											<td><?php echo "$row[TenLop]"; ?></td>
 											<td><?php echo "$row[SiSo]"; ?></td>
 											<td>
-												<button class="btn btn-primary edit-btn" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Sửa</button>
+											<button class="btn btn-primary edit-btn" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Sửa</button>
 											<?php	echo " <form method='POST' action='./controllers/deleteclass.php' style='display:inline-block'><button class='btn btn-primary delete-btn' name='delete' value = '$row[MaLop]'>Xóa</button></form>";?>
  											</td>
 										</tr>
@@ -170,7 +171,7 @@ require "controllers/qllh-submit.php";
 									}
 								}
 								?>
-								<?php if(isset($_SESSION["thongbao"])){echo $_SESSION["thongbao"]; session_unset();} ?>
+								
 								<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 									<div class="modal-dialog" role="document">
 										<div class="modal-content">
@@ -233,21 +234,26 @@ require "controllers/qllh-submit.php";
 			console.log(1);
 			var malop = document.querySelector("#classCode").value;
 			var tenlop = document.querySelector("#className").value;
+			var siso = document.value;
 			console.log(malop,tenlop);
 			$.ajax({
 				type: "POST",
-				url: "controllers/updateclass.php",
+				url: "./controllers/updateclass.php",
 				data: {
 					malop: malop,
-					tenlop: tenlop	
+					tenlop: tenlop,
+					siso: siso,
 				},
-				dataType: "json" 
-				
+				dataType: "json" ,
+				// success: function (response) {
+            	// alert(response[0].message);
+       			//  },
 			});
 		})
 		})
 
 	})
+	
 </script>
 
 <!-- JS boostrap 4 -->
