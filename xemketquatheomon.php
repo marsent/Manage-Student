@@ -14,7 +14,7 @@
                             </div>
                             <select class="custom-select" id="namhoc" name="namhoc">
                             <?php
-                                $conn = mysqli_connect("localhost","root","","newcnpm");
+                                $conn = mysqli_connect("localhost","root","","qlhs");
                                 $Mysql = "SELECT * FROM namhoc";
 
                                 $result1 = $conn->query($Mysql);
@@ -48,7 +48,7 @@
                             <select class="custom-select" id="monhoc" name="monhoc">
 
                             <?php 
-                            $conn = mysqli_connect("localhost","root","","newcnpm");
+                            $conn = mysqli_connect("localhost","root","","qlhs");
                             $sql = "SELECT * FROM monhoc";
                             mysqli_set_charset($conn,"utf8");
 
@@ -83,7 +83,7 @@
                     <tbody>
                     <?php
                     if (isset($_POST["hocky"]) && isset($_POST["monhoc"]) && isset($_POST["namhoc"])) {
-                        $connect = mysqli_connect("localhost", "root","", "newcnpm");
+                        $connect = mysqli_connect("localhost", "root","", "qlhs");
                         if (!$connect) {
                             die("Fail to connect DB");
                         } else {

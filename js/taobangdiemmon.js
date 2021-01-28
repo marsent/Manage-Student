@@ -20,7 +20,7 @@
          type: "POST",
          url: "controllers/namhoc.php",
          dataType: "json",
-         success: function (response) {
+         success: fuFnction (response) {
              html = "";
              for (value of response) {
                  if (value.MaNam == 'N1920') {

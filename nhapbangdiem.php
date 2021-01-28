@@ -43,7 +43,14 @@
                             <label class="input-group-text" for="Lop">Lớp</label>
                         </div>
                         <select class="custom-select" id="Lop">
-                       
+                        
+                        <?php
+                                $html="";
+                            foreach($lop as $value){
+                                $html.="<option value=".$value['MaLop'].">".$value['TenLop']."</option>";
+                            }
+                                echo $html;
+                            ?>
                         </select>
                     </div>
                 </div>
