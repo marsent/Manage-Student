@@ -1,6 +1,6 @@
-## Quản Lý Học Sinh
+# Quản Lý Học Sinh
 
-# Chức năng chính
+## Chức năng chính
 * Thêm học sinh
 * Quản lý học sinh trong lớp
 * Quản lý số lớp
