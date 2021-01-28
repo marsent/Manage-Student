@@ -1,16 +1,11 @@
-<h1 align="center">Quản lí học sinh 👋</h1>
-<p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
-  <a href="#" target="_blank">
-    <img alt="License: ISC" src="https://img.shields.io/badge/License-ISC-yellow.svg" />
-  </a>
-</p>
+## Quản Lý Học Sinh
 
-> Đồ án nhập môn công nghệ phần mền
+# Chức năng chính
+* Thêm học sinh
+* Quản lý học sinh trong lớp
+* Quản lý số lớp
+* Quản lý bảng điểm
+* Báo cáo tổng kết môn
+* Báo cáo tổng kết kỳ
 
-### 🏠 [Homepage](index.php)
-``` git push ```
-
-## Author
-
-👤 **Phương Anh Thuận Quốc Tiến**
+![Alt text](https://github.com/marsent/QuanLyHocSinh/blob/master/ScreenShot/TrangLopHoc.jpg?raw=true?raw=true "Trang Chủ")
